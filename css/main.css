@@ -11,6 +11,9 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 html {
     color: #222;
     font-size: 1em;
@@ -86,6 +89,134 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+:root {
+    --cyan: #54ffcc;
+    --pink: #de67a7;
+    --coffee: #312015;
+}
+
+
+body {
+    font-family: 'Montserrat', Verdana, sans-serif;
+    color: var(--coffee);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Charm', cursive;
+    font-weight: 700;
+    margin: 0em 0em .5em 0em;
+}
+
+.brand {
+    color: var(--pink);
+}
+
+.subtitle {
+    color: var(--coffee);
+}
+
+a, .subtitle {
+    font-family: 'Charm', cursive;
+    font-weight: 400;
+}
+
+#pageWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+#pageWrapper > * {
+    padding: 0 1rem;
+}
+
+header:not(.csh) {
+    width: 100%;
+    background-color: var(--cyan);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--coffee);
+    transition: all 250ms ease-in;
+    overflow: hidden;
+}
+
+#hButton {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    border-radius: .5em;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.hbE {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3.5rem;
+    height: .7rem;
+    background-color: var(--pink);
+    border-radius: .4rem;
+    pointer-events: none;
+}
+
+#hbeTop {
+    top: 15%;
+}
+
+#hbeMid {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#hbeBottom {
+    bottom: 15%;
+}
+
+nav > ul {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inherit;
+    width: 100%;
+}
+
+nav a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+    padding: .25em;
+    border: solid .1em;
+    border-radius: .5em;
+    transition: all 250ms ease-in;
+}
+
+nav a:link,
+nav a:visited {
+    color: white;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--cyan);
+}
+
 
 /* ==========================================================================
    Helper classes
