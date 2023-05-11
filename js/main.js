@@ -2,18 +2,34 @@
 
 document.addEventListener('DOMContentLoaded', dcle => {
     console.log('Ready for action ....');
+    
+    
+    const mainMenu = document.querySelector('.pageNav');
+    const hButton = document.querySelector('#hButton');
 
-    document.querySelector('#hButton').addEventListener('click', e => {
-        const menu = document.querySelector('nav');
-        if(menu.dataset.visible === 'false') {
-            // menu.classList.remove('hidden');
-            menu.style.height = '100%';
-            menu.dataset.visible = 'true'
-        } else {
-            // menu.classList.add('hidden');
-            menu.style.height = '0';
-            menu.dataset.visible = 'false';
+    
+    setMenuVisibility();
+
+    window.addEventListener('resize', setMenuVisibility);
+    document.querySelector('#hButton').addEventListener('click', toggleMenuVisibility);
+
+    function setMenuVisibility() {
+        window.innerWidth >= 820 ? mainMenu.dataset.show = 'true' : mainMenu.dataset.show = 'false';
+        window.innerWidth >= 820 ? hButton.style.display = 'none' : hButton.style.display = 'block';
+        setClass();
+    }
+    
+    function toggleMenuVisibility() {
+        mainMenu.dataset.show === 'true' ? mainMenu.dataset.show = 'false' : mainMenu.dataset.show = 'true';
+        setClass();
+    }
+
+    function setClass() {
+        if(mainMenu.dataset.show === 'true') {
+            mainMenu.classList.remove('hide');
+        } else if(mainMenu.dataset.show === 'false') {
+            mainMenu.classList.add('hide');
         }
-    });
+    }
 
 });
