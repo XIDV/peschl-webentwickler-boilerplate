@@ -136,17 +136,12 @@ header:not(.csh) {
     padding-left: 6rem !important;
 }
 
-.pageNav {
+#pageNav {
     position: sticky;
     top: 0;
     width: 100%;
     background-color: var(--coffee);
     overflow: hidden;
-    transition: all 250ms ease-in;
-}
-
-.hide {
-    height: 0;
 }
 
 #hButton {
