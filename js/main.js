@@ -5,6 +5,7 @@ $(() => {
     
     const mainMenu = $('#pageNav');
     const hButton = $('#hButton');
+    const pageLinks = $('.pageLink');
     
     let vpIsDesktop = false;
     let mainMenuVisible = false;
@@ -13,6 +14,9 @@ $(() => {
 
     $(window).on('resize', setIsDesktop);
     hButton.on('click', toggleMenu);
+    pageLinks.each((index, value) => {
+        $(value).on('click', toggleMenu);
+    });
 
 
     function setIsDesktop() {
