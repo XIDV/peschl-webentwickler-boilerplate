@@ -15,11 +15,17 @@ $(() => {
     showPosition();
 
     $(window).on('resize', setIsDesktop);
+    
     hButton.on('click', toggleMenu);
+    
     pageLinks.each((index, value) => {
         $(value).on('click', toggleMenu);
     });
 
+    $('#showOnMap').on('click', showPosition)
+    $('#closeMapDialog').on('click', () => {
+        document.querySelector('#mapContainer').close();
+    });
 
     function setIsDesktop() {
         $(window).innerWidth() >= 820 ? vpIsDesktop = true : vpIsDesktop = false;
@@ -35,23 +41,24 @@ $(() => {
             mainMenuVisible = !mainMenuVisible;
         }
     }
-
+    
     function showPosition(e = undefined) {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 if(e) {
-                    // TODO: geo bei Nutzerinteraktion
+                    
+                    document.querySelector('#mapContainer').showModal();
                 } else {
-                    alert(`
-                        Breitengrad: ${pos.coords.latitude}
-                        Längengrad: ${pos.coords.longitude}
-                        Höhe: ${pos.coords.altitude}
-                        Exaktheit: ${pos.coords.accuracy}
-                        Exaktheit Höhe: ${pos.coords.altitudeAccuracy}
-                        Richtung: ${pos.coords.heading}
-                        Geschwindigkeit: ${pos.coords.speed}
-                        Zeitstempel: ${pos.timestamp}
-                    `);
+                    // alert(`
+                    //     Breitengrad: ${pos.coords.latitude}
+                    //     Längengrad: ${pos.coords.longitude}
+                    //     Höhe: ${pos.coords.altitude}
+                    //     Exaktheit: ${pos.coords.accuracy}
+                    //     Exaktheit Höhe: ${pos.coords.altitudeAccuracy}
+                    //     Richtung: ${pos.coords.heading}
+                    //     Geschwindigkeit: ${pos.coords.speed}
+                    //     Zeitstempel: ${pos.timestamp}
+                    // `);
                     position = pos;
                 }
             }, err => {

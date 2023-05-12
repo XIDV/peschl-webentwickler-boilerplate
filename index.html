@@ -27,6 +27,16 @@
     <body>
 
         <!-- Add your site or application content here -->
+        <dialog id="mapContainer">
+            <header class="csh">
+                <h2>Ihr Weg zu Uns</h2>
+            </header>
+            <div>
+                <div id="mapTarget"></div>
+                <button type="button" id="closeMapDialog">Schließen</button>
+            </div>
+        </dialog>
+
         <div id="pageWrapper">
             <nav id="pageNav">
                 <ul>
@@ -105,7 +115,7 @@
                 </div>
 
                 <aside>
-                    <div class="asideButton">Position anzeigen</div>
+                    <div class="asideButton" id="showOnMap">Position anzeigen</div>
                     <div class="asideButton">Zur WebApp</div>
                 </aside>
 
