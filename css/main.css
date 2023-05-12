@@ -94,13 +94,15 @@ textarea {
     --important: #860C0B;
     --coffee: #312015;
     --cappuccino: #ecb357;
+
+    --mainGradient: linear-gradient(45deg, var(--important), var(--coffee), var(--important));
 }
 
 
 body {
     font-family: 'Montserrat', Verdana, sans-serif;
     color: var(--coffee);
-    background-color: var(--papyrus);
+    background: var(--mainGradient);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -131,13 +133,20 @@ a, .subtitle {
     margin: 0 auto;
 }
 
-#pageWrapper > * {
+/* #pageWrapper > * {
+    padding: 0 1rem;
+} */
+
+#pageNav,
+#contentWrapper,
+aside,
+footer {
     padding: 0 1rem;
 }
 
 header:not(.csh) {
     width: 100%;
-    background-color: var(--cappuccino);
+    background: linear-gradient(var(--cappuccino),white, var(--papyrus));
     padding-left: 6rem !important;
 }
 
@@ -225,7 +234,8 @@ nav a {
     text-align: center;
     text-decoration: none;
     font-size: 2rem;
-    background: linear-gradient(45deg, var(--important), var(--coffee), var(--important));
+    /* background: linear-gradient(45deg, var(--important), var(--coffee), var(--important)); */
+    background: var(--mainGradient);
     padding: .25em;
     border-radius: .5em;
     transition: all 250ms ease-in;
@@ -253,7 +263,7 @@ h2 {
 }
 
 #contentWrapper {
-    /* background-color: red; */
+    background-color: var(--papyrus);
 }
 
 .contentSection {
@@ -275,10 +285,11 @@ h2 {
 
 .imageContainer img {
     width: 100%;
+    border-radius: 2rem;
 }
 
 aside {
-    /* background-color: green; */
+    background-color: var(--papyrus);
 }
 
 footer {
@@ -339,11 +350,12 @@ footer {
         grid-column: 1 / 4;
         width: auto;
     }
-
+    
     #pageNav {
         grid-row: 2 / 3;
         grid-column: 1 / 2;
         width: auto;
+        background-color: var(--papyrus);
     }
 
     nav ul {
@@ -365,7 +377,6 @@ footer {
     main {
         display: flex;
         flex-direction: row;
-        gap: 1rem;
     }
 
     #contentWrapper {
