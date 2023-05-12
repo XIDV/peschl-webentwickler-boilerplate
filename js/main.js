@@ -9,6 +9,7 @@ $(() => {
     
     let vpIsDesktop = false;
     let mainMenuVisible = false;
+    let position;
     
     setIsDesktop();
     showPosition();
@@ -36,13 +37,26 @@ $(() => {
     }
 
     function showPosition(e = undefined) {
-        // todo: geodaten ermitteln
-
-
-        if(e) {
-            // TODO: geo bei Nutzerinteraktion
-        } else {
-            // bei load automatisch anzeigen ...
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                if(e) {
+                    // TODO: geo bei Nutzerinteraktion
+                } else {
+                    alert(`
+                        Breitengrad: ${pos.coords.latitude}
+                        Längengrad: ${pos.coords.longitude}
+                        Höhe: ${pos.coords.altitude}
+                        Exaktheit: ${pos.coords.accuracy}
+                        Exaktheit Höhe: ${pos.coords.altitudeAccuracy}
+                        Richtung: ${pos.coords.heading}
+                        Geschwindigkeit: ${pos.coords.speed}
+                        Zeitstempel: ${pos.timestamp}
+                    `);
+                    position = pos;
+                }
+            }, err => {
+                alert(`Sorry! Standortbestimmung nicht möglich! \n ${err.message}`);
+            });
         }
     }
 
