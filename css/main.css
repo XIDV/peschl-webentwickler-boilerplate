@@ -91,7 +91,7 @@ textarea {
    ========================================================================== */
 :root {
     --papyrus: #DDE7C6;
-    --important: #8A2A29;
+    --important: #860C0B;
     --coffee: #312015;
     --cappuccino: #ecb357;
 }
@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand {
     font-weight: 700;
+    text-shadow: .25rem .25rem .5rem white;
     color: var(--important);
 }
 
@@ -141,12 +142,12 @@ header:not(.csh) {
 }
 
 h1 {
-    font-size: clamp(4rem, 10vw, 10rem);
+    font-size: clamp(3rem, 10vw, 10rem);
     font-weight: 400;
 }
 
 .subtitle {
-    font-size: clamp(2rem, 5vw, 7rem);
+    font-size: clamp(1.25rem, 4vw, 5rem);
     margin: .25em 0;
 }
 
@@ -224,7 +225,7 @@ nav a {
     text-align: center;
     text-decoration: none;
     font-size: 2rem;
-    background: linear-gradient(45deg, var(--papyrus), var(--coffee), var(--papyrus));
+    background: linear-gradient(45deg, var(--important), var(--coffee), var(--important));
     padding: .25em;
     border-radius: .5em;
     transition: all 250ms ease-in;
@@ -238,7 +239,7 @@ nav a:visited {
 
 nav a:hover,
 nav a:focus {
-    color: var(--important);
+    color: var(--papyrus);
     box-shadow: .1rem .1rem .25rem white, .1rem .1rem .75rem var(--important);
 }
 
@@ -340,7 +341,6 @@ footer {
     }
 
     #pageNav {
-        
         grid-row: 2 / 3;
         grid-column: 1 / 2;
         width: auto;
