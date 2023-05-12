@@ -90,8 +90,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 :root {
-    --cyan: #54ffcc;
-    --pink: #de67a7;
+    --papyrus: #DDE7C6;
+    --important: #8A2A29;
     --coffee: #312015;
     --cappuccino: #ecb357;
 }
@@ -100,7 +100,7 @@ textarea {
 body {
     font-family: 'Montserrat', Verdana, sans-serif;
     color: var(--coffee);
-    background-color: var(--cappuccino);
+    background-color: var(--papyrus);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -110,7 +110,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand {
-    color: var(--pink);
+    font-weight: 700;
+    color: var(--important);
 }
 
 .subtitle {
@@ -126,7 +127,6 @@ a, .subtitle {
     display: flex;
     flex-wrap: wrap;
     max-width: 120em;
-    background-color: white;
     margin: 0 auto;
 }
 
@@ -136,12 +136,13 @@ a, .subtitle {
 
 header:not(.csh) {
     width: 100%;
-    background-color: var(--cyan);
+    background-color: var(--cappuccino);
     padding-left: 6rem !important;
 }
 
 h1 {
     font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 400;
 }
 
 .subtitle {
@@ -158,12 +159,13 @@ h1 {
 }
 
 #hButton {
-    position: absolute;
+    position: fixed;
     left: 1rem;
     top : 1rem;
     width: 4rem;
     height: 4rem;
-    background-color: white;
+    background-color: var(--papyrus);
+    border: solid thin var(--coffee);
     border-radius: .5em;
     cursor: pointer;
     z-index: 3;
@@ -176,9 +178,14 @@ h1 {
     transform: translateX(-50%);
     width: 3.5rem;
     height: .7rem;
-    background-color: var(--pink);
+    background-color: var(--coffee);
     border-radius: .4rem;
     pointer-events: none;
+    transition: background-color 250ms ease-in;
+}
+
+#hButton:hover .hbE {
+    background-color: var(--important);
 }
 
 #hbeTop {
@@ -217,7 +224,7 @@ nav a {
     text-align: center;
     text-decoration: none;
     font-size: 2rem;
-    background: linear-gradient(45deg, var(--cappuccino), var(--coffee), var(--cappuccino));
+    background: linear-gradient(45deg, var(--papyrus), var(--coffee), var(--papyrus));
     padding: .25em;
     border-radius: .5em;
     transition: all 250ms ease-in;
@@ -231,8 +238,8 @@ nav a:visited {
 
 nav a:hover,
 nav a:focus {
-    color: var(--cyan);
-    box-shadow: .1rem .1rem .25rem white, .1rem .1rem .75rem var(--cyan);
+    color: var(--important);
+    box-shadow: .1rem .1rem .25rem white, .1rem .1rem .75rem var(--important);
 }
 
 main {
