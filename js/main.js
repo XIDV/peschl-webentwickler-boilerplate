@@ -11,6 +11,7 @@ $(() => {
     let mainMenuVisible = false;
     
     setIsDesktop();
+    showPosition();
 
     $(window).on('resize', setIsDesktop);
     hButton.on('click', toggleMenu);
@@ -33,4 +34,16 @@ $(() => {
             mainMenuVisible = !mainMenuVisible;
         }
     }
+
+    function showPosition(e = undefined) {
+        // todo: geodaten ermitteln
+
+
+        if(e) {
+            // TODO: geo bei Nutzerinteraktion
+        } else {
+            // bei load automatisch anzeigen ...
+        }
+    }
+
 });
