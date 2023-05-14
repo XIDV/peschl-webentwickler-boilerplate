@@ -111,19 +111,36 @@ h1, h2, h3, h4, h5, h6, .asideButton {
     margin: 0em 0em .25em 0em;
 }
 
+h1 {
+    font-size: clamp(3rem, 10vw, 10rem);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: clamp(3rem, 5vw, 6rem);
+}
+
+h3 {
+    text-align: center;
+    font-size: clamp(2.75rem, 3vw, 5rem);
+}
+
 .brand {
     font-weight: 700;
     text-shadow: .25rem .25rem .5rem white;
     color: var(--important);
 }
 
-.subtitle {
-    color: var(--coffee);
-}
-
 a, .subtitle {
     font-family: 'Charm', cursive;
     font-weight: 400;
+}
+
+#mapTarget {
+    width: 100%;
+    height: 30rem;
+    border-radius: 2rem;
+    z-index: 0;
 }
 
 #pageWrapper {
@@ -146,13 +163,11 @@ header:not(.csh) {
     padding-left: 6rem !important;
 }
 
-h1 {
-    font-size: clamp(3rem, 10vw, 10rem);
-    font-weight: 400;
-}
-
 .subtitle {
-    font-size: clamp(1.25rem, 4vw, 5rem);
+    text-align: center;
+    font-size: clamp(1.25rem, 3vw, 5rem);
+    font-style: italic;
+    color: var(--coffee);
     margin: .25em 0;
 }
 
@@ -258,10 +273,6 @@ main {
     flex-direction: column;
 }
 
-h2 {
-    font-size: clamp(3rem, 5vw, 6rem);
-}
-
 #contentWrapper {
     background-color: var(--papyrus);
 }
@@ -271,8 +282,13 @@ h2 {
 }
 
 .sc {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+
+article {
+    width: 100%;
 }
 
 .sc .textContent {

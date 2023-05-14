@@ -45,22 +45,28 @@ $(() => {
     function showPosition(e = undefined) {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
-                if(e) {
-                    
-                    document.querySelector('#mapContainer').showModal();
-                } else {
-                    // alert(`
-                    //     Breitengrad: ${pos.coords.latitude}
-                    //     Längengrad: ${pos.coords.longitude}
-                    //     Höhe: ${pos.coords.altitude}
-                    //     Exaktheit: ${pos.coords.accuracy}
-                    //     Exaktheit Höhe: ${pos.coords.altitudeAccuracy}
-                    //     Richtung: ${pos.coords.heading}
-                    //     Geschwindigkeit: ${pos.coords.speed}
-                    //     Zeitstempel: ${pos.timestamp}
-                    // `);
-                    position = pos;
-                }
+                
+                alert(`
+                    Breitengrad: ${pos.coords.latitude}
+                    Längengrad: ${pos.coords.longitude}
+                    Höhe: ${pos.coords.altitude}
+                    Exaktheit: ${pos.coords.accuracy}
+                    Exaktheit Höhe: ${pos.coords.altitudeAccuracy}
+                    Richtung: ${pos.coords.heading}
+                    Geschwindigkeit: ${pos.coords.speed}
+                    Zeitstempel: ${pos.timestamp}
+                `);
+                position = pos;
+                
+                var map = L.map('mapTarget', {scrollWheelZoom:false}).setView([position.coords.latitude, position.coords.longitude], 13);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 11,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                var markerCurrentPos = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+                var markerDestination = L.marker([51.38820041500327, 7.0026361190617825]).addTo(map);
+                
             }, err => {
                 alert(`Sorry! Standortbestimmung nicht möglich! \n ${err.message}`);
             });

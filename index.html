@@ -19,6 +19,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
         <link rel="stylesheet" href="css/main.css">
 
         <meta name="theme-color" content="#fafafa">
@@ -27,15 +28,6 @@
     <body>
 
         <!-- Add your site or application content here -->
-        <dialog id="mapContainer">
-            <header class="csh">
-                <h2>Ihr Weg zu Uns</h2>
-            </header>
-            <div>
-                <div id="mapTarget"></div>
-                <button type="button" id="closeMapDialog">Schließen</button>
-            </div>
-        </dialog>
 
         <div id="pageWrapper">
             <nav id="pageNav">
@@ -53,8 +45,8 @@
                     <div class="hbE" id="hbeMid"></div>
                     <div class="hbE" id="hbeBottom"></div>
                 </div>
-                <h1><span class="brand">Rikas</span> Eiskafé</h1>
-                <p class="subtitle">Ihre Eismanufaktur im Essener Süden</p>
+                <h1><span class="brand">Kikas</span> Eiskafé</h1>
+                <p class="subtitle">~ Seit 1981 ~</p>
             </header>
 
             <main>
@@ -100,7 +92,14 @@
                             <h2>Info</h2>
                         </header>
                         <div class="sc">
-                            
+                            <article id="mapContainer">
+                                <header class="csh">
+                                    <h3>Ihr Weg zu Uns</h3>
+                                </header>
+                                
+                                <div id="mapTarget"></div>
+                                
+                            </article>
                         </div>
                     </section>
 
@@ -115,7 +114,6 @@
                 </div>
 
                 <aside>
-                    <div class="asideButton" id="showOnMap">Position anzeigen</div>
                     <div class="asideButton">Zur WebApp</div>
                 </aside>
 
@@ -129,6 +127,8 @@
 
         </div>
         
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="js/vendor/modernizr-3.11.2.min.js"></script>
         <script src="js/plugins.js"></script>
