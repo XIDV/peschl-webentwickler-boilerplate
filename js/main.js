@@ -36,9 +36,42 @@ $(() => {
         if(e && !vpIsDesktop) {
             mainMenu.slideToggle('fast', 'linear');
             mainMenuVisible = !mainMenuVisible;
+            alterMenButton();
         } else {
             vpIsDesktop ? mainMenu.slideDown('fast', 'linear') : mainMenu.slideUp('fast', 'linear');
             mainMenuVisible = !mainMenuVisible;
+        }
+    }
+
+    function alterMenButton() {
+        const hbeTop = $('#hbeTop');
+        const hbeMid = $('#hbeMid');
+        const hbeBottom = $('#hbeBottom');
+
+        if(!mainMenuVisible) {
+            hbeTop.css({
+                'top': '50%',
+                'transform': 'translate(-50%, -50%) rotate(-45deg)'
+            });
+
+            hbeMid.css({
+                'transform': 'translate(-50%, -50%) rotate(45deg)'
+            });
+
+            hbeBottom.css('opacity', '0');
+
+        } else {
+            hbeTop.css({
+                'top': '15%',
+                'transform': 'translate(-50%, 0) rotate(0deg)'
+            });
+
+            hbeMid.css({
+                'transform': 'translate(-50%, -50%) rotate(0deg)'
+            });
+
+            hbeBottom.css('opacity', '1');
+
         }
     }
     

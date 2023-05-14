@@ -202,7 +202,7 @@ header:not(.csh) {
     background-color: var(--coffee);
     border-radius: .4rem;
     pointer-events: none;
-    transition: background-color 250ms ease-in;
+    transition: all 250ms ease-in;
 }
 
 #hButton:hover .hbE {
