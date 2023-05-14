@@ -160,6 +160,8 @@ footer {
 header:not(.csh) {
     width: 100%;
     background: linear-gradient(var(--cappuccino),white, var(--papyrus));
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
     padding-left: 6rem !important;
 }
 
@@ -177,6 +179,7 @@ header:not(.csh) {
     width: 100%;
     background-color: var(--coffee);
     overflow: hidden;
+    z-index: 3;
 }
 
 #hButton {
@@ -320,24 +323,31 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     min-height: 5rem;
     color: white;
     background: linear-gradient(to top, var(--coffee), var(--coffee) 75%, var(--papyrus));
-    padding-top: 2rem;
+    padding: 2rem 0 0 0;
+}
+
+.footerBox {
+    width: 20rem;
+    text-align: center;
+    font-size: .6rem;
 }
 
 @media all and (min-width: 40em) {
     .textContent {
         flex: 1;
+        padding-right: 1rem;
     }
 
     .imageContainer {
         width: 33%;
     }   
-
-    /* .imageContainer img {
-        width: 33%;
-    } */
 }
 
 @media screen and (min-width: 51.25em) {
@@ -379,35 +389,25 @@ footer {
     }
     
     #pageNav {
-        position: relative;
+        position: sticky;
+        top: 0;
+        height: 100vh;
         grid-row: 2 / 5;
         grid-column: 1 / 2;
         width: auto;
         background-color: var(--papyrus);
+        z-index: 0;
     }
-
+    
     nav ul {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        width: auto;
         flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav li {
-        width: auto;
-    }
-
-    nav a {
-        width: 20vw;
     }
 
     main {
         grid-row: 2 / 5;
         grid-column: 2 / 4;
     }
-
+    
     footer {
         position: relative;
         width: auto;
@@ -425,7 +425,7 @@ footer {
     #contentWrapper {
         flex: 1;
     }
-
+    
     aside {
         width: 30%;
     }

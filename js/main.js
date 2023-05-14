@@ -9,6 +9,7 @@ $(() => {
     
     let vpIsDesktop = false;
     let mainMenuVisible = false;
+    let hbuttonIsX = false;
     let position;
     
     setIsDesktop();
@@ -36,10 +37,13 @@ $(() => {
         if(e && !vpIsDesktop) {
             mainMenu.slideToggle('fast', 'linear');
             mainMenuVisible = !mainMenuVisible;
+            hbuttonIsX = !hbuttonIsX;
             alterMenButton();
         } else {
             vpIsDesktop ? mainMenu.slideDown('fast', 'linear') : mainMenu.slideUp('fast', 'linear');
             mainMenuVisible = !mainMenuVisible;
+            hbuttonIsX = false;
+            alterMenButton();
         }
     }
 
@@ -48,7 +52,7 @@ $(() => {
         const hbeMid = $('#hbeMid');
         const hbeBottom = $('#hbeBottom');
 
-        if(!mainMenuVisible) {
+        if(hbuttonIsX) {
             hbeTop.css({
                 'top': '50%',
                 'transform': 'translate(-50%, -50%) rotate(-45deg)'
