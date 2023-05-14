@@ -44,6 +44,9 @@ $(() => {
     
     function showPosition(e = undefined) {
         if(navigator.geolocation) {
+            const geoOptions = {
+                enableHighAccuracy: true
+            } 
             navigator.geolocation.getCurrentPosition(pos => {
                 
                 alert(`
@@ -76,7 +79,7 @@ $(() => {
                 
             }, err => {
                 alert(`Sorry! Standortbestimmung nicht möglich! \n ${err.message}`);
-            });
+            }, geoOptions);
         }
     }
 
