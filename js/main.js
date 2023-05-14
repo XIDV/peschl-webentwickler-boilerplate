@@ -58,7 +58,7 @@ $(() => {
                 `);
                 position = pos;
                 
-                var map = L.map('mapTarget', {scrollWheelZoom:false}).setView([position.coords.latitude, position.coords.longitude], 13);
+                var map = L.map('mapTarget', {scrollWheelZoom:false}).setView([position.coords.latitude, position.coords.longitude], 19);
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 11,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -66,6 +66,13 @@ $(() => {
 
                 var markerCurrentPos = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
                 var markerDestination = L.marker([51.38820041500327, 7.0026361190617825]).addTo(map);
+
+                L.Routing.control({
+                    waypoints: [
+                      L.latLng(position.coords.latitude, position.coords.longitude),
+                      L.latLng(51.38820041500327, 7.0026361190617825)
+                    ]
+                  }).addTo(map);
                 
             }, err => {
                 alert(`Sorry! Standortbestimmung nicht möglich! \n ${err.message}`);
