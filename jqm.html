@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="de">
+
+<!--                                                      head-section -->
+    <head>
+        <title>jQuery Mobile -- Wiederholung</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Sebastian Peschl">
+        <meta name="generator" content="Visual Studio Code">
+
+        <link rel="stylesheet" href="./css/kikasTheme.css">
+        <link rel="stylesheet" href="./css/jquery.mobile.icons.min.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+        
+        
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        
+    </head>
+    
+    <!--                                                      body-section -->
+    <body>
+        <!-- INSERT CONTENT HERE -->
+        
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <h1>Kikas Shop</h1>
+            </div>
+            <div role="main" class="content" style="padding: 0 1rem;">
+                <h2>Willkommen in unserem Shop</h2>
+                <a href="#page2" data-transition="flip" class="ui-btn ui-corner-all">Unsere Konditionen</a>
+
+                <h2>Speisekarte</h2>
+                <ul data-role="listview" data-filter="true" data-filter-placeholder="Speisekarte durchsuchen ..." data-insert="true">
+                    <li><a href="#">Fürst-Pückler-Eis</a></li>
+                    <li><a href="#">Schwedeneisbecher</a></li>
+                    <li><a href="#">Bananensplit</a></li>
+                    <li><a href="#">Pfirsich Melba</a></li>
+                    <li><a href="#">Coupe Dänemark</a></li>                    <li><a href="#">Schwarzwald-Becher</a></li>
+
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h2>~ Seit 1981 ~</h2>
+            </div>
+        </div>
+
+        <div data-role="page" id="page2" data-dialog="true">
+            <div data-role="header">
+                <h1>Konditionen</h1>
+            </div>
+            <div role="main" class="content" style="padding: 0 .5rem;">
+                <h2>Lieferregion</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio rerum dignissimos amet neque consequatur corporis culpa minus nulla cumque debitis?</p>
+                <h2>Mindestbestellwert</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, non.</p>
+                <h2>Lieferzeiten</h2>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <a href="#" data-rel="back">Close</a>
+            </div>
+        </div>
+
+
+        <!--                                                           Scripts -->
+        
+    </body>
+
+</html>
