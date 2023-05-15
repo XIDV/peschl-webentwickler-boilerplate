@@ -3,36 +3,47 @@
 $(() => {
     console.log('Ready for action ....');
     
+    // Selektion der Navigationselemente
     const mainMenu = $('#pageNav');
     const hButton = $('#hButton');
     const pageLinks = $('.pageLink');
     
+    // Deklaration und Initialisierung erforderlicher Statusvariablen
     let vpIsDesktop = false;
     let mainMenuVisible = false;
     let hbuttonIsX = false;
     let position;
     
+    // Initiale Funktionsaufrufe
     setIsDesktop();
     showPosition();
 
+    // Registrierung erforderlicher Event-Listener
     $(window).on('resize', setIsDesktop);
-    
     hButton.on('click', toggleMenu);
-    
     pageLinks.each((index, value) => {
         $(value).on('click', toggleMenu);
     });
-
     $('#showOnMap').on('click', showPosition)
     $('#closeMapDialog').on('click', () => {
         document.querySelector('#mapContainer').close();
     });
 
+    /*
+        Funktion setIsDesktop():
+        Manipulation der Statusvariablen vpIsDesktop und Aufruf d. Funktion toggle Menu().
+    */
     function setIsDesktop() {
         $(window).innerWidth() >= 820 ? vpIsDesktop = true : vpIsDesktop = false;
         toggleMenu();
     }
 
+    /*
+        Funktion toggleMenu(e):
+        - Steuerung / Animation der Sichtbarkeit der Seitennavigation
+        - Manipulation der Statusvariablen mainMenuVisible, sowie hbuttonIsX
+        - Aufruf d. Funktion alterMenButton()
+    */
     function toggleMenu(e) {
         if(e && !vpIsDesktop) {
             mainMenu.slideToggle('fast', 'linear');
@@ -47,6 +58,10 @@ $(() => {
         }
     }
 
+    /*
+        Funktion alterMenButton():
+        Manipulation der Positionen, Rotationen und Sichtbarkeit der hButton-Kindelemente
+    */
     function alterMenButton() {
         const hbeTop = $('#hbeTop');
         const hbeMid = $('#hbeMid');
@@ -78,7 +93,13 @@ $(() => {
 
         }
     }
-    
+
+    /*
+        Funktion showPosition(e = undefined):
+        - Ermittlung der aktuellen, geographischen Position
+        - Ausgabe der ermittelten Daten als alert()
+        - Ausgabe der aktuellen Position, des "Ziels" und einer Routenberechnung auf einer Karte (OSM)
+    */
     function showPosition(e = undefined) {
         if(navigator.geolocation) {
             const geoOptions = {
@@ -119,5 +140,4 @@ $(() => {
             }, geoOptions);
         }
     }
-
 });

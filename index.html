@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Abschlussarbeit ILS - Rikas Eiskafé</title>
+        <title>Abschlussarbeit ILS - Kikas Eiscafé</title>
         <meta name="description" content="Lösung der Praxisaufgabe im Rahmen der Abschlussarbeit geprüfter Webentwickler (ILS) unter Verwendung von HTML5-Boilerplate und jQuery Mobile">
         <meta name="author" content="Sebastian Peschl">
         <meta name="generator" content="Visual Studio Code">
@@ -15,6 +15,7 @@
         <meta property="og:image" content="">
 
         <link rel="manifest" href="site.webmanifest">
+        <link rel="favicon" href="icon.png">
         <link rel="apple-touch-icon" href="icon.png">
         <!-- Place favicon.ico in the root directory -->
 
@@ -31,6 +32,7 @@
         <!-- Add your site or application content here -->
 
         <div id="pageWrapper">
+            <!--                    Navigation -->
             <nav id="pageNav">
                 <ul>
                     <li><a class="pageLink" href="#products">Spezialitäten</a></li>
@@ -39,17 +41,20 @@
                     <li><a class="pageLink" href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
-            
+            <!--                    (Page-)Header -->
             <header>
                 <div id="hButton" title="Menü ein-/ausblenden">
                     <div class="hbE" id="hbeTop"></div>
                     <div class="hbE" id="hbeMid"></div>
                     <div class="hbE" id="hbeBottom"></div>
                 </div>
-                <h1><span class="brand">Kikas</span> Eiskafé</h1>
-                <p class="subtitle">~ Seit 1981 ~</p>
+                <div>
+                    <h1><span class="brand">Kikas</span> Eiscafé</h1>
+                    <p class="subtitle">~ Seit 1981 ~</p>
+                </div>
+                <img id="headerLogo" src="./img/kikas_logo.png" alt="Kikas Logo">
             </header>
-
+            <!--                    Main -->
             <main>
                 <div id="contentWrapper">
                     <section class="contentSection" id="products">
@@ -112,25 +117,34 @@
                         </div>
                     </section>
                 </div>
-
+                <!--               (Main-)Aside -->
                 <aside>
-                    <a class="asideButton" href="jqm.html" target="_blank" title="WebApp in neuem Fenster öffnen">Zur WebApp</a>
+                    <article class="asArt">
+                        <h2>Events 2023</h2>
+                        <ul>
+                            <li>Event 1</li>
+                            <li>Event 2</li>
+                            <li>Event 3</li>
+                        </ul>
+                    </article>
+
+                    <article class="asArt">
+                        <h2>Unser Shop</h2>
+                        <a class="asideButton" href="jqm.html" target="_blank" title="WebApp in neuem Fenster öffnen">Zur WebApp</a>
+                    </article>
                 </aside>
-
             </main>
-
+            <!--                    Footer -->
             <footer>
-
                 <div class="footerBox">Lösung der praktischen Aufgabe im Rahmen der Abschlussarbeit zum Web-Entwickler (ILS)</div>
                 <div class="footerBox">&copy; Sebastian Peschl</div>
                 <div class="footerBox">2023</div>
-
             </footer>
-
         </div>
         
+        <!-- Script Section                                                 -->
+
         <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-        
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -139,5 +153,4 @@
         <script src="js/main.js"></script>
 
     </body>
-
 </html>

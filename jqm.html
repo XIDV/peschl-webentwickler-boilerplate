@@ -3,18 +3,19 @@
 
 <!--                                                      head-section -->
     <head>
-        <title>jQuery Mobile -- Wiederholung</title>
+        <title>Kikas Shop</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Sebastian Peschl">
         <meta name="generator" content="Visual Studio Code">
 
+        <!-- Einbinden der erforderlichen Stylesheets -->
         <link rel="stylesheet" href="./css/kikasTheme.css">
         <link rel="stylesheet" href="./css/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
         
-        
+        <!-- Einbinden der erforderlichen js-Quellen -->
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
@@ -23,8 +24,7 @@
     
     <!--                                                      body-section -->
     <body>
-        <!-- INSERT CONTENT HERE -->
-        
+        <!-- Seite 1 -->
         <div data-role="page" id="page1">
             <div data-role="header">
                 <h1>Kikas Shop</h1>
@@ -48,6 +48,7 @@
             </div>
         </div>
 
+        <!-- Seite 2 (Dialog) -->
         <div data-role="page" id="page2" data-dialog="true">
             <div data-role="header">
                 <h1>Konditionen</h1>
@@ -67,11 +68,6 @@
             <div data-role="footer" data-position="fixed">
                 <a href="#" data-rel="back">Close</a>
             </div>
-        </div>
-
-
-        <!--                                                           Scripts -->
-        
+        </div>      
     </body>
-
 </html>
