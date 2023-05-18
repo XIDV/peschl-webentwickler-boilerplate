@@ -350,19 +350,8 @@ footer {
     font-size: .6rem;
 }
 
-@media all and (min-width: 40em) {
-    .textContent {
-        flex: 1;
-        padding-right: 1rem;
-    }
-
-    .imageContainer {
-        width: 33%;
-    }   
-}
-
 /* Tablet-Konfiguration */
-@media screen and (min-width: 51.25em) {
+@media all and (min-width: 40em) {
     #hButton {
         display: none;
     }
@@ -387,17 +376,26 @@ footer {
         max-width: 60em;
         margin: 1rem auto;
     }
-
+    
     nav li {
         justify-content: space-around;
     }
-
+    
     nav a {
         max-width: 15rem;
     }
-
+    
     .sc {
         align-items: center;
+    }
+
+    .textContent {
+        flex: 1;
+        padding-right: 1rem;
+    }
+    
+    .imageContainer {
+        width: 33%;
     }
 }
 

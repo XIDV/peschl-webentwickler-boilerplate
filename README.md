@@ -15,11 +15,11 @@
   - [Projektbeschreibung \[Inhalt\]](#projektbeschreibung-inhalt)
   - [Übersicht über die relevanten Projektdateien \[Inhalt\]](#übersicht-über-die-relevanten-projektdateien-inhalt)
   - [index.html im Detail \[Inhalt\]](#indexhtml-im-detail-inhalt)
-    - [`head`-Bereich \[Inhalt\]](#head-bereich-inhalt)
+    - [`<head>`-Bereich \[Inhalt\]](#head-bereich-inhalt)
     - [`body`-Bereich \[Inhalt\]](#body-bereich-inhalt)
-      - [Details zum `nav`-Element (`id="pageNav"`) \[Inhalt\]](#details-zum-nav-element-idpagenav-inhalt)
-      - [Details zum `header`-Element (Seiten-Header) \[Inhalt\]](#details-zum-header-element-seiten-header-inhalt)
-      - [Das `div`-Element `id="contentWrapper"` \[Inhalt\]](#das-div-element-idcontentwrapper-inhalt)
+      - [Details zum `<nav>`-Element (`id="pageNav"`) \[Inhalt\]](#details-zum-nav-element-idpagenav-inhalt)
+      - [Details zum `<header>`-Element (Seiten-Header) \[Inhalt\]](#details-zum-header-element-seiten-header-inhalt)
+      - [Das `<div>`-Element `id="contentWrapper"` \[Inhalt\]](#das-div-element-idcontentwrapper-inhalt)
         - [Details zur Sektion `id="products"` (Responsives Bild mit `srcset` und `sizes`) \[Inhalt\]](#details-zur-sektion-idproducts-responsives-bild-mit-srcset-und-sizes-inhalt)
         - [Details zur Sektion `id="info"` (OSM-Karte mit Leafletjs und Leaflet Routing Machine) \[Inhalt\]](#details-zur-sektion-idinfo-osm-karte-mit-leafletjs-und-leaflet-routing-machine-inhalt)
   - [main.css im Detail \[Inhalt\]](#maincss-im-detail-inhalt)
@@ -73,38 +73,51 @@ Für die Gestaltung der WebApp habe ich unter Verwendung von [ThemeRoller](https
 
 ## index.html im Detail [[Inhalt](#inhalt)]
 
-### `head`-Bereich [[Inhalt](#inhalt)]
+### `<head>`-Bereich [[Inhalt](#inhalt)]
 
-Die HTML-Elemente `title`, bzw. die `meta`-Elemente mit den Attributen `description`, `author` und `generator` wurden modifiziert bzw. ergänzt.
+Die HTML-Elemente `<title>`, bzw. die `<meta>`-Elemente mit den Attributen `description`, `author` und `generator` wurden modifiziert bzw. ergänzt.
 
-Neben der primären Styling-Datei ***main.css*** ([main.css](#maincss-im-detail-inhalt)) werden im `head`-Bereich des HTML-Dokuments via CDN die Dateien ***leaflet-routing-machine.css*** ([Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) und ***leaflet.css*** ([Leafletjs](https://leafletjs.com/)) eingebunden. Diese dienen dem styling der OSM-Karte und der Route.
+Neben der primären Styling-Datei ***main.css*** ([main.css](#maincss-im-detail-inhalt)) werden im `<head>`-Bereich des HTML-Dokuments via CDN die Dateien ***leaflet-routing-machine.css*** ([Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) und ***leaflet.css*** ([Leafletjs](https://leafletjs.com/)) eingebunden. Diese dienen dem styling der OSM-Karte und der Route.
 
 ### `body`-Bereich [[Inhalt](#inhalt)]
 
-Der Aufbau folgt einem sinnvollen, semantischen Markup unter Einsatz der etablierten HTML5-Elemente. Der Content gliedert sich dementsprechend in die primäten Bereiche [`nav`](#details-zum-nav-element-idpagenav-inhalt), [`header`](#details-zum-header-element-seiten-header-inhalt), `main` und `footer`. Diese werden von einem `div`-Element (`id="pageWrapper"`) umschlossen.  
-Innerhalb von `main` findet eine weitere Unterteilung des Contents statt. Hier steht einem weiteren `div`-Element (`id="contentWrapper"`) ein `aside`-Element gegenüber.
+Der Aufbau folgt einem sinnvollen, semantischen Markup unter Einsatz der etablierten HTML5-Elemente. Der Content gliedert sich dementsprechend in die primäten Bereiche [`<nav>`](#details-zum-nav-element-idpagenav-inhalt), [`<header>`](#details-zum-header-element-seiten-header-inhalt), `<main>` und `<footer>`. Diese werden von einem `<div>`-Element (`id="pageWrapper"`) umschlossen.  
+Innerhalb von `main` findet eine weitere Unterteilung des Contents statt. Hier steht einem weiteren `<div>`-Element (`id="contentWrapper"`) ein `<aside>`-Element gegenüber.
 
-#### Details zum `nav`-Element (`id="pageNav"`) [[Inhalt](#inhalt)]
+#### Details zum `<nav>`-Element (`id="pageNav"`) [[Inhalt](#inhalt)]
 
-Die Seitennavigation hat die Gestalt einer ungeordneten Liste (`ul`) mit vier Listenelementen (`li`). Jedes dieser Listenelemente binhaltet jeweils ein Link-Element (`a`) mit der Klasse `pageLink`. Diese Link-Elemente verweisen auf die verschiedenen Sektionen von [`id="contentWrapper"`](#das-div-element-idcontentwrapper-inhalt).
+Die Seitennavigation hat die Gestalt einer ungeordneten Liste (`<ul>`) mit vier Listenelementen (`<li>`). Jedes dieser Listenelemente binhaltet jeweils ein Link-Element (`<a>`) mit der Klasse `pageLink`. Diese Link-Elemente verweisen auf die verschiedenen Sektionen von [`id="contentWrapper"`](#das-div-element-idcontentwrapper-inhalt).
 
-#### Details zum `header`-Element (Seiten-Header) [[Inhalt](#inhalt)]
+#### Details zum `<header>`-Element (Seiten-Header) [[Inhalt](#inhalt)]
 
-Der Seiten-Header beinhaltet drei Komponenten.
+Der Seiten-Header beinhaltet drei Elemente.
 
-| Komponente | ID | Beschreibung |
+| Elemente | ID | Beschreibung |
 | --- | --- | --- |
-| `div` | `hButton` | Eine Schaltfläche zum ein-/ausblenden der Navigation bei sehr kleinen VP. |
-| `div` | none | Container für den Seitentitel (`h1`) und einen Textabsatz (`p`) mit der Klasse `subtitle` |
-| `img` | `headerLogo` | Logo |
+| `<div>` | `hButton` | Eine Schaltfläche zum ein-/ausblenden der Navigation bei sehr kleinen VP. |
+| `<div>` | none | Container für den Seitentitel (`<h1>`) und einen Textabsatz (`<p>`) mit der Klasse `subtitle` |
+| `<img>` | `headerLogo` | Logo |
 
-#### Das `div`-Element `id="contentWrapper"` [[Inhalt](#inhalt)]
+#### Das `<div>`-Element `id="contentWrapper"` [[Inhalt](#inhalt)]
 
-Die unterschiedlichen Content-Bereiche werden innerhalb von `id="contentWrapper"` mit `section`-Elementen strukturiert. Im Rahmen dieses Projektes sind lediglich die Sektionen [`id="products"`](#details-zur-sektion-idproducts-responsives-bild-mit-srcset-und-sizes-inhalt) und [`id="info"`](#details-zur-sektion-idinfo-osm-karte-mit-leafletjs-und-leaflet-routing-machine-inhalt) relevant.
+Die unterschiedlichen Content-Bereiche werden innerhalb von `id="contentWrapper"` mit `<section>`-Elementen strukturiert. Im Rahmen dieses Projektes sind lediglich die Sektionen [`id="products"`](#details-zur-sektion-idproducts-responsives-bild-mit-srcset-und-sizes-inhalt) und [`id="info"`](#details-zur-sektion-idinfo-osm-karte-mit-leafletjs-und-leaflet-routing-machine-inhalt) relevant.
+
+Die Inhalte der `<section>`-Elemente der Klasse `contentSection` verfügen alle über die selbe Grundstruktur. Sie bestehen aus einem `<header>`-Element mit `class="csh"` (ContentSectionHeader) und einem `<div>`-Container mit `class="sc"` (SectionContent).
 
 ##### Details zur Sektion `id="products"` (Responsives Bild mit `srcset` und `sizes`) [[Inhalt](#inhalt)]
 
-...
+Neben einem `<div>`-Element der Klasse `textContent` findet sich in dieser Sektion innerhalb des `<div>`-Containers mit `class="sc"`, ein weiteres `<div>`-Element mit der Klasse `imageContainer` welches das in der Aufgabenstellung geforderte responsive Bild beinhaltet.
+
+Das `<img>`-Element bestitzt die folgenden Attribute und Werte:
+
+| Attribut | Wert(e) | Erläuterungen |
+| --- | --- | --- |
+| `src` | *"./img/banana-cups-320.jpg 320w"* | Verweis auf die Default-Bilddatei, wenn der Browser das `srcset`-Attribut nicht versteht. |
+| `alt` | *"Bananen-Eisbecher"* | Alternativtext |
+| `srcset` | *"./img/banana-cups-320.jpg 320w,<br>./img/banana-cups-640.jpg 640w,<br>./img/banana-cups-1280.jpg 1280w"* | Verweise auf die verschiedenen Auflösungsvarianten der Bilddatei. |
+| `sizes` | *"(max-width: 40em) 100vw, 33vw"* | Größendefinition: Bis zu einer maximalen VP-Breite von `40em` bekommt das Bild eine Beite von `100vw`, darüber hinaus eine Breite von `33vw`. |
+
+**Hinweis**: Bemerkenswert sind in diesem Zusammenahng die unterschiedlichen Verhaltensweisen Chromium-Basierter Browser einerseits und Firefox andererseits. Während Firefox beim skalieren des VP immer zur am besten zum VP passende Bilddatei wechselt, verhalten sich Browser die auf Chromium basieren so, dass nachdem die am höchsten aufgelöste Bilddatei nachgeladen wurde (Skalierung des VP von klein nach groß.), beim erneuten verkleinern des VP **nicht** auf eine geringer aufgelöste Version des Bildes zurückgewechselt wird.
 
 ##### Details zur Sektion `id="info"` (OSM-Karte mit [Leafletjs](https://leafletjs.com/) und [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) [[Inhalt](#inhalt)]
 
