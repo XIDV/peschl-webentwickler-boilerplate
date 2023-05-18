@@ -149,7 +149,7 @@ a, .subtitle {
 #pageWrapper {
     display: flex;
     flex-wrap: wrap;
-    max-width: 120em;
+    max-width: 180em;
     margin: 0 auto;
 }
 
