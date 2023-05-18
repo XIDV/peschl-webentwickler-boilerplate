@@ -23,6 +23,9 @@
         - [Details zur Sektion `id="products"` (Responsives Bild mit `srcset` und `sizes`) \[Inhalt\]](#details-zur-sektion-idproducts-responsives-bild-mit-srcset-und-sizes-inhalt)
         - [Details zur Sektion `id="info"` (OSM-Karte mit Leafletjs und Leaflet Routing Machine) \[Inhalt\]](#details-zur-sektion-idinfo-osm-karte-mit-leafletjs-und-leaflet-routing-machine-inhalt)
   - [main.css im Detail \[Inhalt\]](#maincss-im-detail-inhalt)
+    - [Fonts und CSS-Variablen \[Inhalt\]](#fonts-und-css-variablen-inhalt)
+    - [Navigationsleiste \[Inhalt\]](#navigationsleiste-inhalt)
+    - [(Quasi) dreispaltiges Layout \[Inhalt\]](#quasi-dreispaltiges-layout-inhalt)
   - [main.js im Detail \[Ihalt\]](#mainjs-im-detail-ihalt)
   - [jqm.html im Detail \[Inhalt\]](#jqmhtml-im-detail-inhalt)
   - [kikasTheme.css \[Inhalt\]](#kikasthemecss-inhalt)
@@ -121,11 +124,47 @@ Das `<img>`-Element bestitzt die folgenden Attribute und Werte:
 
 ##### Details zur Sektion `id="info"` (OSM-Karte mit [Leafletjs](https://leafletjs.com/) und [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) [[Inhalt](#inhalt)]
 
-...
+Neben der geforderten Ermittlung und Ausgabe der aktuellen Geo-Daten habe ich mich dazu entschlossen, einerseits die aktuelle, geographische Position, sowie ein Zielpunkt und andererseits eine Routenberechnung durchführen und anzeigen zu lassen.
+
+Um diese Ziele zu erreichen findet sich innerhalb der Sektion `id="info"` ein `<article>`-Element mit der `id="mapContainer"`. Darin wiederum ist neben einem `<header>`-Bereich der Klasse `csh` ein `<div>`-Container mit der `id="mapTarget"` enthalten. Innerhalb von `id="mapTarget"` wird unter Verwendung von [Leafletjs](https://leafletjs.com/) und [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) die OSM-Karte und die Route eingefügt.
 
 ## main.css im Detail [[Inhalt](#inhalt)]
 
-...
+### Fonts und CSS-Variablen [[Inhalt](#inhalt)]
+
+In diesem Projekt werden zwei Fonts von [Google](https://fonts.google.com/) verwendet:
+
+1. [Charm](https://fonts.google.com/specimen/Charm?query=Charm) für Titel, Überschriften und Schaltflächen (Links als Buttons)
+2. [Montserrat](https://fonts.google.com/specimen/Montserrat?query=Montser) für Text
+
+Folgende Farben und Farbverläufe wurden in Form von CSS-Variablen definiert:
+
+| Bezeichnung | Wert | Typ |
+| --- | --- | --- |
+| `--papyrus` | `#DDE7C6` | Farbe |
+| `--important` | `#860C0B` | Farbe |
+| `--coffee` | `#312015` | Farbe |
+| `--cappuccino` | `#ecb357` | Farbe |
+| `--mainGradient` | `linear-gradient(45deg, var(--important), var(--coffee), var(--important))` | Linearer Farbverlauf, um 45 Grad gedreht. |
+
+### Navigationsleiste [[Inhalt](#inhalt)]
+
+Der Aufgabenstellung entsprechend wird via CSS eine horizontale Navigationsleiste realisiert. Einem konsequenten Mobile First-Ansatz entsprechened jedoch erst ab dem ersten Breakpoint welcher bei `40em`(640px) liegt. Ist der VP kleiner befinden sich die Elemente der Seitennavigation in einer vertikalen Anordnung und sind standardmäßig ausgeblendet. Ein "Hamburger-Button" (`id="hButton"`) ermöglicht den Zugriff auf die Navigationspunkte.
+
+Die Navigationsleiste ist oberhalb des `<header>`-Elements positioniert. Auf diese Weise wird ein optisch natloser Übergang zum eigentlichen Content (`<main>`) vereinfacht.
+
+Ab einer VP-Breite von `80em` (1280px) wird die Seitennavigation als vertikale Leiste links vom Content (`<main>`) dargestellt. Um dies zu realisieren wechselt das Layout-Konzept von Flex-Box zu Grid. Damit ist ein asymetrisches, zweispalitges Layout realisiert.
+
+Unabhängig vom aktuellen VP und der jeweiligen Erscheinungsform der Navigationsleiste, wurde dieser mit der CSS-Eigenschaft `position: sticky` eine ständige Erreichbarkeit ohne lästiges scollen verliehen.
+
+Alle Links der Navigation, sowie die Schalftfläche zum öffnen der WebApp (ausgenommen `id="hButton"`) wurde mittels der CSS-Eigenschaften `border-radius: .5em` mit abgerundeten Ecken, bzw. `background: var(--mainGradient)` mit einem Farbverlauf versehen.
+
+### (Quasi) dreispaltiges Layout [[Inhalt](#inhalt)]
+
+Ein letzter Breakpoint wurde bei einer VP-Breite von `100em` (1600px) definiert. Ab hier wird das Elemente `<main>` zu einem Flex-Container und die Elemente `id="contentWrapper"` und `<aside>` zu Flex-Items.  
+`<aside>` erhält die CSS-Eigenschaft `width: 30%`, `id="contentWrapper"` erhält `flex: 1` und damit den verbleibenden horizontalen Raum.
+
+Dieses (quasi) dreispaltige Layout ermöglicht eine bessere Nutzung des zur Verfügung stehenden Raums bei großen VP.
 
 ## main.js im Detail [[Ihalt](#inhalt)]
 

@@ -34,7 +34,7 @@ $(() => {
         Manipulation der Statusvariablen vpIsDesktop und Aufruf d. Funktion toggle Menu().
     */
     function setIsDesktop() {
-        $(window).innerWidth() >= 820 ? vpIsDesktop = true : vpIsDesktop = false;
+        $(window).innerWidth() >= 640 ? vpIsDesktop = true : vpIsDesktop = false;
         toggleMenu();
     }
 
