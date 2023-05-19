@@ -28,7 +28,19 @@
     - [Fonts und CSS-Variablen \[Inhalt\]](#fonts-und-css-variablen-inhalt)
     - [Navigationsleiste \[Inhalt\]](#navigationsleiste-inhalt)
     - [(Quasi) dreispaltiges Layout \[Inhalt\]](#quasi-dreispaltiges-layout-inhalt)
-  - [main.js im Detail \[Ihalt\]](#mainjs-im-detail-ihalt)
+  - [main.js im Detail \[Inhalt\]](#mainjs-im-detail-inhalt)
+    - [Initiale Operationen \[Inhalt\]](#initiale-operationen-inhalt)
+      - [Selektion der relevanten Elemente \[Inhalt\]](#selektion-der-relevanten-elemente-inhalt)
+      - [Deklaration und Initialisierung erfoderlicher Statusvariablen \[Inhalt\]](#deklaration-und-initialisierung-erfoderlicher-statusvariablen-inhalt)
+      - [Initiale Funktionsaufrufe \[Inhalt\]](#initiale-funktionsaufrufe-inhalt)
+      - [Registrierung der erfoderlichen EventListener \[Inhalt\]](#registrierung-der-erfoderlichen-eventlistener-inhalt)
+    - [Manipulation der Sichtbarkeit der Seitennavigation und Darstellung des "Hamburger"-Buttons \[Ihalt\]](#manipulation-der-sichtbarkeit-der-seitennavigation-und-darstellung-des-hamburger-buttons-ihalt)
+      - [Die Funktion `setIsDesktop()` \[Inhalt\]](#die-funktion-setisdesktop-inhalt)
+      - [Die Funktion `toggleMenu(e)` \[Inhalt\]](#die-funktion-togglemenue-inhalt)
+      - [Die Funktion `alterMenButton()` \[Inhalt\]](#die-funktion-altermenbutton-inhalt)
+    - [Ermittlung und Anzeige von Geodaten mittels der Funktion `showPosition(e = undefined)` \[Inhalt\]](#ermittlung-und-anzeige-von-geodaten-mittels-der-funktion-showpositione--undefined-inhalt)
+      - [Erfogreiche Ermittlung d. Geodaten \[Inhalt\]](#erfogreiche-ermittlung-d-geodaten-inhalt)
+      - [Fehler beim ermitteln der Geodaten \[Inhalt\]](#fehler-beim-ermitteln-der-geodaten-inhalt)
   - [jqm.html im Detail \[Inhalt\]](#jqmhtml-im-detail-inhalt)
   - [kikasTheme.css \[Inhalt\]](#kikasthemecss-inhalt)
 
@@ -187,13 +199,114 @@ Ein letzter Breakpoint wurde bei einer VP-Breite von `100em` (1600px) definiert.
 
 Dieses (quasi) dreispaltige Layout ermöglicht eine bessere Nutzung des zur Verfügung stehenden Raums bei großen VP.
 
-## main.js im Detail [[Ihalt](#inhalt)]
+## main.js im Detail [[Inhalt](#inhalt)]
 
-...
+Die Datei ***main.js*** widmet sich bei diesem Projekt zwei Aufgabenbereichen:
+
+1. Die automatische und benutzergesteuerte manipulation der Seitennavigation in Bezug auf dessen Sichtbarkeit, bzw. dessen Wechsel. In Abhängigkeit hierzu ebenso die manipulation der Darstellung des "Hamburger"-Buttons.
+2. Die Ermittlung und automatische Ausgabe der Geodaten, sowie die Initialisierung und Darstellung einer OSM-Karte, nebst Routenberechnung und ebenso dessen Darstellung innerhalb der Karte.
+
+### Initiale Operationen [[Inhalt](#inhalt)]
+
+Nach dem die Seite vollständig geladen wurde (`$(() => { ... })`) werden die folgenden Operationen initial ausgeführt:
+
+#### Selektion der relevanten Elemente [[Inhalt](#inhalt)]
+
+| Konstante | Element / ID / Klasse | Erläuterung |
+| --- | --- | --- |
+| `mainMenu` | `#pageNav` | `<nav>`-Element von ***index.html*** |
+| `hButton` | `#hButton` | Der "Hamburger"-Button |
+| `pageLinks` | `.pageLink` | Alle `<a>` Elemente mit entsprechender Klassenzugehörigkeit. (Die einzelnen Links der Seitennavigation) |
+
+#### Deklaration und Initialisierung erfoderlicher Statusvariablen [[Inhalt](#inhalt)]
+
+| Variable | initialer Wert | Erläuterung |
+| --- | --- | --- |
+| `vpIsDesktop` | `false` | Ist der akltuelle VP ein Desktop? |
+| `mainMenuVisible` | `false` | Ist die Seitennavigation momentan sichtbar? |
+| `hbuttonIsX` | `false` | Wird der "Hamburger"-Button momentan als "X" angezeigt? |
+| `positon` | none | Zwischenspeicher f. die ermittelten Geodaten. |
+
+#### Initiale Funktionsaufrufe [[Inhalt](#inhalt)]
+
+| Funktionsaufruf | Erläuterung |
+| --- | --- |
+| `setIsDesktop()` | Initiale Abfrage ob VP ein Desktop ist. [zur Funktion](#die-funktion-setisdesktop-inhalt) |
+| `showPostition()` | Ermittlung und Ausgabe der Position. [zur Funktion](#ermittlung-und-anzeige-von-geodaten-mittels-der-funktion-showpositione--undefined-inhalt) |
+
+#### Registrierung der erfoderlichen EventListener [[Inhalt](#inhalt)]
+
+| Element / Referenz | Event-Type | Handler | Erläuterung |
+| --- | --- | --- | --- |
+| `$(window)` | `resize` | `setIsDesktop` | Bei einem `resize`-Event wird die Funktion `setIsDesktop()` aufgerufen. [zum Handler](#die-funktion-setisdesktop-inhalt) |
+| `hButton` | `click` | `toggleMenu` | Bei einem Klick auf das Element welches `hButton` referenziert wird die Funktion `toggleMenu(e)` aufgerufen. [zum Handler](#die-funktion-togglemenue-inhalt) |
+| `pageLinks` <br> bzw. <br> `link` | `click` | `toggleMenu` | Mittels der Methode `each()` wird über die in `pageLinks` enthaltenen Elemente iteriert. Das jeweilige Element wird über die Variable `link` referenziert. Bei einem Klick-Event welches an einem über `link` referenzierten Element auftritt wird die Funktion `toggleMenu(e)` aufgerufen. |
+
+### Manipulation der Sichtbarkeit der Seitennavigation und Darstellung des "Hamburger"-Buttons [[Ihalt](#inhalt)]
+
+Die folgenden Funktionen finden bei der automatisierten, bzw. benutzergesteuerten Manipulation der Sichbarkeit der Seitennavigation und Erscheinungsform des "Hamburger"-Buttons Anwendung.
+
+#### Die Funktion `setIsDesktop()` [[Inhalt](#inhalt)]
+
+Durch Aufruf der Methode `innerWidth()` des `$(window)`-Objektes wird die aktuelle Breite des VP ermittelt. Ist diese Breite **größer oder gleich** 640px wird der Wert der Variablen `vpIsDesktop` auf den Wert `true` gesetzt andernfalls auf `false`.
+
+Im Anschluss hierauf wird die Funktion `toggleMenu()` (ohne Argument) aufgerufen.
+
+#### Die Funktion `toggleMenu(e)` [[Inhalt](#inhalt)]
+
+Die Funktion prüft zunächst ob ein Parameter `e` übergeben wurde **und** ob der Wert von `vpIsDesktop` den Wert `false` hat. Wenn **beides** zutreffend ist, dann werden folgende Anweisungen ausgeführt:
+
+1. Aufruf der Methode `slideToggle(...)` am Element welches `mainMenu` rferenziert.
+2. Invertierung des Wertes der Variablen `mainMenuVisible`.
+3. Invertierung des Wertes der Variablen `hbuttonIsX`.
+4. Aufruf der Funktion `alterMenButton()`.
+
+Sofern **auch nur eine** der zuvor definierten Bedinugnen nicht erfüllt ist werden folgende Anweisungen ausgeführt:
+
+1. Sofern `vpIsDesktop` den Wert `true` besitzt wird die Methode `slideDown()` an dem Element welches `mainMenu` referenziert ausgeführt, andernfalls die Methode `slideUp()`.
+2. Invertierung des Wertes der Variablen `mainMenuVisible`.
+3. Der Wert von `hbuttonIsX` wird auf `false` gesetzt.
+4. Aufruf der Funktion `alterMenButton()`.
+
+#### Die Funktion `alterMenButton()` [[Inhalt](#inhalt)]
+
+Um nachfolgend die Elemente des "Hamburger"-Buttons manipulieren zu können werden diese via entsprechender Konstanten (`hbeTop`, `hbeMid`, `hbeBottom`) referenzert.
+
+In Abhängigkeit von dem aktuellen Wert der Variablen `hbuttonIsX` werden unter Verwendung der Methode `css()` die referenzierten Element des "Hamburger"-Buttons entweder horizontal übereinander, oder in der form eines "X" arrangiert.
+
+### Ermittlung und Anzeige von Geodaten mittels der Funktion `showPosition(e = undefined)` [[Inhalt](#inhalt)]
+
+Nach erfolgreicher Prüfung ob der verwendete Browser die Geolocation API unterstützt wird zunächst ein Objekt `geoOptions` deklartiert. Dieses beinhaltet als einziges Attribut `enableHighAccuracy` mit dem Wert `true`.
+
+Hiernach erfolgt der Aufrug der Methode `getCurrentPosition(pos => { ... }, err => { ... }, geoOptions)`. Als Argumente werden dieser Methode zwei Anonyme Funktionen und das zufor Definierte Objekt `geoOptions` übergeben.
+
+#### Erfogreiche Ermittlung d. Geodaten [[Inhalt](#inhalt)]
+
+Bei erfolgreiche Ermittlung der Geodaten wird die erste Anonyme Funktion ausgeführt, welche als Argument (`pos`) die Geodaten enthält.
+
+Zuerst erfolgt, wie in der Aufgabenstellung gefordert, die Ausgabe der Geodaten in Form eines Alert-Dialoges (`alert( ... ) `). Zudem werden die Daten in der Variablen `position` gesichert.
+
+Unter Verwendung von [Leafletjs](https://leafletjs.com/) wird mit der Methode `map( ... )` ein neues Map-Objekt erzeugt und über die Variable `map` referenziert. Als Argumente erhält `map( ... )` das Zielelement (Einhängepukt im DOM) in ***index.html***, sowie ein Konfigurationsobjekt. Mit Hilfe dieses Konfigurationsobjektes wird die Zoomfunkton mittels Mausrad deaktiviert (`scrollWeelZoom:false`).  
+Ferner wird mit Hilfe der Methode `setView( ... )` die Ansicht auf spezifische Koordinaten zentriert. Diese Koordinaten werden als Argument in der Form eines Arrays der Methode Übergeben (`[position.coords.latitude, position.coords.longitude]`). Das zweite Argument `11` definiert die initiale Zoomstufe.
+
+Mit dem Aufruf der Methoden `tileLayer( ... )` und `addTo(map)` werden die eigentlichen Kartendaten geladen und dem Objekt `map` zugewiesen.  
+Hierbei erhält `tileLayer( ... )` zwei Argumente:
+
+1. Der Pfad zum Kartenmaterial (`'https://tile.openstreetmap.org/{z}/{x}/{y}.png'`)
+2. Ein Konfigurationsobjekt bei dem mittels des Attributs `maxZoom` die maximale Zoomstufe, und durch `attribution` obligatorische Copyright-Informationen definiert werden. 
+
+Im folgenden Schritt werden der Karte zwei Marker hinzugefügt (die ermittelte, geographische Position und ein Zielort). Die geschieht jeweils durch den Aufruf d. Methode `marker(...)`. Als Argrument erhält die Methode die entsprechende, geographische Position an denen die Markierungen in der Karte gesetzt werden sollen.  
+Auch hier werden durch Aufruf von `addTo(map)` diese Objekte dem `map`-Objekt hinzugefügt.
+
+Unter Verwendung von [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) erfolgt eine Berechnung und Anzeige einer Route zwischen der ermittelten Postioen und dem Zielpunk.  
+Hierfür wird die Methode `control( ... )` aufgerufen. Als Argumente erhält diese ein Objekt welches als Attribut ein Array von Wegpunkten (`waypoints`) enthält. (Hier lediglich Start und Ziel.)
+
+#### Fehler beim ermitteln der Geodaten [[Inhalt](#inhalt)]
+
+Sofern es zu einem Fehler kommt wird die zweite Anonyme Funktion (`err => { ... }) ausgeführt. Diese gibt eine Meldung in der Form eines Alert-Dialogs angezeigt welche u. A. die Fehlernachricht beinhaltet aus.
 
 ## jqm.html im Detail [[Inhalt](#inhalt)]
 
-...
 
 ## kikasTheme.css [[Inhalt](inhalt)]
 

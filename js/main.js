@@ -21,12 +21,8 @@ $(() => {
     // Registrierung erforderlicher Event-Listener
     $(window).on('resize', setIsDesktop);
     hButton.on('click', toggleMenu);
-    pageLinks.each((index, value) => {
-        $(value).on('click', toggleMenu);
-    });
-    $('#showOnMap').on('click', showPosition)
-    $('#closeMapDialog').on('click', () => {
-        document.querySelector('#mapContainer').close();
+    pageLinks.each((index, link) => {
+        $(link).on('click', toggleMenu);
     });
 
     /*
@@ -119,9 +115,9 @@ $(() => {
                 `);
                 position = pos;
                 
-                var map = L.map('mapTarget', {scrollWheelZoom:false}).setView([position.coords.latitude, position.coords.longitude], 19);
+                var map = L.map('mapTarget', {scrollWheelZoom:false}).setView([position.coords.latitude, position.coords.longitude], 11);
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 11,
+                    maxZoom: 19,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
 
