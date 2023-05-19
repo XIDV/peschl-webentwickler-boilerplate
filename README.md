@@ -22,6 +22,8 @@
       - [Das `<div>`-Element `id="contentWrapper"` \[Inhalt\]](#das-div-element-idcontentwrapper-inhalt)
         - [Details zur Sektion `id="products"` (Responsives Bild mit `srcset` und `sizes`) \[Inhalt\]](#details-zur-sektion-idproducts-responsives-bild-mit-srcset-und-sizes-inhalt)
         - [Details zur Sektion `id="info"` (OSM-Karte mit Leafletjs und Leaflet Routing Machine) \[Inhalt\]](#details-zur-sektion-idinfo-osm-karte-mit-leafletjs-und-leaflet-routing-machine-inhalt)
+      - [`<aside>` innerhalb von `<main>` \[Inhalt\]](#aside-innerhalb-von-main-inhalt)
+      - [Details zum `<footer>`-Element (Seiten-Footer) \[Inhalt\]](#details-zum-footer-element-seiten-footer-inhalt)
   - [main.css im Detail \[Inhalt\]](#maincss-im-detail-inhalt)
     - [Fonts und CSS-Variablen \[Inhalt\]](#fonts-und-css-variablen-inhalt)
     - [Navigationsleiste \[Inhalt\]](#navigationsleiste-inhalt)
@@ -87,6 +89,17 @@ Neben der primären Styling-Datei ***main.css*** ([main.css](#maincss-im-detail-
 Der Aufbau folgt einem sinnvollen, semantischen Markup unter Einsatz der etablierten HTML5-Elemente. Der Content gliedert sich dementsprechend in die primäten Bereiche [`<nav>`](#details-zum-nav-element-idpagenav-inhalt), [`<header>`](#details-zum-header-element-seiten-header-inhalt), `<main>` und `<footer>`. Diese werden von einem `<div>`-Element (`id="pageWrapper"`) umschlossen.  
 Innerhalb von `main` findet eine weitere Unterteilung des Contents statt. Hier steht einem weiteren `<div>`-Element (`id="contentWrapper"`) ein `<aside>`-Element gegenüber.
 
+Vor dem schließenden `</body>`-Tag werden die erforderlichen, JavaScriptdateien eingebunden:
+
+| Datei | Variante | Erläuterung |
+| --- | --- | --- |
+| ***leaflet.js*** | CDN | Bibiliothek zur anzeige von OSM-Karten. [Leafletjs](https://leafletjs.com/) |
+| ***leaflet-routing-machine.js*** | CDN | Bilbiothek zur Berechnung und Anzeige von Routen innerhalb von OSM-Karten [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) |
+| ***jquery-1.11.1.min.js*** | CDN | jQuery in der Version 1.11.1 |
+| ***modernizr-3.11.2.min.js*** | local | Analyse der jweils zur Verfügung stehenden Browserfeatures. (Teil von HTML5 Boilerplate.) |
+| ***plugins.js*** | local | Datei zum einbinden von Plugins (Teil von HTML5 Boilerplate.) |
+| ***main.js*** | local | Eigener JavaScript-Code (Teil von HTML5 Boilerplate.) |
+
 #### Details zum `<nav>`-Element (`id="pageNav"`) [[Inhalt](#inhalt)]
 
 Die Seitennavigation hat die Gestalt einer ungeordneten Liste (`<ul>`) mit vier Listenelementen (`<li>`). Jedes dieser Listenelemente binhaltet jeweils ein Link-Element (`<a>`) mit der Klasse `pageLink`. Diese Link-Elemente verweisen auf die verschiedenen Sektionen von [`id="contentWrapper"`](#das-div-element-idcontentwrapper-inhalt).
@@ -127,6 +140,14 @@ Das `<img>`-Element bestitzt die folgenden Attribute und Werte:
 Neben der geforderten Ermittlung und Ausgabe der aktuellen Geo-Daten habe ich mich dazu entschlossen, einerseits die aktuelle, geographische Position, sowie ein Zielpunkt und andererseits eine Routenberechnung durchführen und anzeigen zu lassen.
 
 Um diese Ziele zu erreichen findet sich innerhalb der Sektion `id="info"` ein `<article>`-Element mit der `id="mapContainer"`. Darin wiederum ist neben einem `<header>`-Bereich der Klasse `csh` ein `<div>`-Container mit der `id="mapTarget"` enthalten. Innerhalb von `id="mapTarget"` wird unter Verwendung von [Leafletjs](https://leafletjs.com/) und [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) die OSM-Karte und die Route eingefügt.
+
+#### `<aside>` innerhalb von `<main>` [[Inhalt](#inhalt)]
+
+Dem `<div>`-Container `id="contentWrapper"` wird ein `<aside>`-Element gegenüber gestellt. Dieses Bietet Raum für weitere Informationen. Hierin befinden sich zwei Elemente vom Typ `<article>` mit der Klasse `asArt`. In dem zweiten dieser Elemente findet sich der in der Aufgabenstellung geforderte Button, ein Link welcher auf die WebApp verweist. Dieser Link ist mit dem Attribut `target="_blanc"` versehen um die WebApp in einem neuen Fenster/Tab zu öffnen.
+
+#### Details zum `<footer>`-Element (Seiten-Footer) [[Inhalt](#inhalt)]
+
+Das `<footer>`-Element beinhaltet drei `<div>`-Container der Klasse `footerBox`. In diesen finden sich Informationen über dieses Projekt, den Autor und das Erstellungsjahr.
 
 ## main.css im Detail [[Inhalt](#inhalt)]
 
