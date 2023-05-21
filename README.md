@@ -42,6 +42,10 @@
       - [Erfogreiche Ermittlung d. Geodaten \[Inhalt\]](#erfogreiche-ermittlung-d-geodaten-inhalt)
       - [Fehler beim ermitteln der Geodaten \[Inhalt\]](#fehler-beim-ermitteln-der-geodaten-inhalt)
   - [jqm.html im Detail \[Inhalt\]](#jqmhtml-im-detail-inhalt)
+    - [`<head>`-Bereich von ***jqm.html*** \[Inhalt\]](#head-bereich-von-jqmhtml-inhalt)
+    - [`<body>`-Bereich von ***jqm.html*** \[Inhalt\]](#body-bereich-von-jqmhtml-inhalt)
+      - [`id="page1"` im Detail \[Inhalt\]](#idpage1-im-detail-inhalt)
+      - [`id="page2"` im Detail \[Inhalt\]](#idpage2-im-detail-inhalt)
   - [kikasTheme.css \[Inhalt\]](#kikasthemecss-inhalt)
 
 ---
@@ -284,7 +288,7 @@ Hiernach erfolgt der Aufrug der Methode `getCurrentPosition(pos => { ... }, err 
 
 Bei erfolgreiche Ermittlung der Geodaten wird die erste Anonyme Funktion ausgeführt, welche als Argument (`pos`) die Geodaten enthält.
 
-Zuerst erfolgt, wie in der Aufgabenstellung gefordert, die Ausgabe der Geodaten in Form eines Alert-Dialoges (`alert( ... ) `). Zudem werden die Daten in der Variablen `position` gesichert.
+Zuerst erfolgt, wie in der Aufgabenstellung gefordert, die Ausgabe der Geodaten in Form eines Alert-Dialoges (`alert( ... )`). Zudem werden die Daten in der Variablen `position` gesichert.
 
 Unter Verwendung von [Leafletjs](https://leafletjs.com/) wird mit der Methode `map( ... )` ein neues Map-Objekt erzeugt und über die Variable `map` referenziert. Als Argumente erhält `map( ... )` das Zielelement (Einhängepukt im DOM) in ***index.html***, sowie ein Konfigurationsobjekt. Mit Hilfe dieses Konfigurationsobjektes wird die Zoomfunkton mittels Mausrad deaktiviert (`scrollWeelZoom:false`).  
 Ferner wird mit Hilfe der Methode `setView( ... )` die Ansicht auf spezifische Koordinaten zentriert. Diese Koordinaten werden als Argument in der Form eines Arrays der Methode Übergeben (`[position.coords.latitude, position.coords.longitude]`). Das zweite Argument `11` definiert die initiale Zoomstufe.
@@ -307,7 +311,56 @@ Sofern es zu einem Fehler kommt wird die zweite Anonyme Funktion (`err => { ... 
 
 ## jqm.html im Detail [[Inhalt](#inhalt)]
 
+***jqm.html*** implementiert eine WebApp auf Basis von jQuery Mobile. Wie in der Aufgabenstellung gefordert werden zwei "Seiten" erstellt. Eine mit dem eigentlichen Content und die Zweite als Dialog.
+
+### `<head>`-Bereich von ***jqm.html*** [[Inhalt](#inhalt)]
+
+Neben der Modifikation/Ergänzung des `<title>`-Elmenents und der `<meta>`-Elemente mit den `name`-Attributen `"autohor"` und `"generator"` werden die folgenden Dateien via `<link>`, bzw. `<script>` eingebunden:
+
+| Datei | Variante | Erläuterung |
+| --- | --- | --- |
+| ***kikasTheme.css*** | local | Ein Custom-Stylesheet um das Aussehen der WebApp an den Look der Webseite (***index.html***) anzugleichen. (Unter Verwendung von [ThemeRoller](https://themeroller.jquerymobile.com/) generiert und händisch modifiziert.) |
+| ***jquery.mobile.icons.min.css*** | local | Icon-Stylesheet (Unter Verwendung von [ThemeRoller](https://themeroller.jquerymobile.com/) generiert.) |
+| ***jquery.mobile.structure-1.4.5.min.css*** | CDN | Nur die CSS-Struktur von jQuery Mobile. |
+| ***jquery-1.11.1.min.js*** | CDN | jQuery in der Version 1.11.1. |
+| ***jquery.mobile-1.4.5.min.js*** | CDN | jQuery Mobile in der (letzten) Version 1.4.5. |
+
+**Hinweis / Bemerkung**: Zur Realisierung dieser Teilaufgabe muss auf eine veraltete Version von jQuery zurückgegriffen werden. jQuery Mobile wird seit 7. Oktober 2021 nicht mehr weiterentwickelt und ist dahingehend ebenfalls als veraltet anzusehen (weitere Informationen zur Einstellung des Projekts finden Sie [hier](https://blog.jquerymobile.com/2021/10/07/jquery-maintainers-continue-modernization-initiative-with-deprecation-of-jquery-mobile/)).
+
+### `<body>`-Bereich von ***jqm.html*** [[Inhalt](#inhalt)]
+
+Es werden zwei "Seiten" (`id="page1"` und `id="page2"`) implementiert, welche beide der folgenden Struktur folgen:
+
+(als HTML-Elemente werden jeweils `<div>`-Container verwendet welche via der Attribute `data-role`, bzw. `role` spezifiziert werden.)
+
+- `data-role="page"`
+  - `data-role="header"`
+  - `role="main"`
+  - `data-role="footer"`
+
+#### `id="page1"` im Detail [[Inhalt](inhalt)]
+
+Die "Seite" beinhaltet wie gefordert, Kopf- u. Fußzeile mit jeweiliger Überschrift, sowie im `role="main"`-Bereich ein Button zum aufrufen des Dialogs und eine Liste.
+
+Bei dem Button handelt es sich um ein `<a>`-Element welches durch Zuweisung der Klassen `ui-button` und `ui-corner-all` (abgerundete Ecken) als solcher deklrariert wird. Als Übergangsanimation wurde `data-transition` mit dem Wert `"flip"` verwendet.
+
+Für die geforderte Liste wurde ein `<ul>`-Element verwendet welches über die folgenden Attribute verfügt:
+
+- `data-role="listview`
+- `data-filter="true"` (Nutzereingaben filtern die Liseneinträge.)
+- `data-filter="Speisekarte durchsuchen ..."` (Platzhaltertext für das Filter-Eingabefeld.)
+- `data-insert="true"`
+
+#### `id="page2"` im Detail [[Inhalt](inhalt)]
+
+Neben dem Attribut `data-role="page"` erhält das root-Element der 2. "Seite" `data-dialog` mit dem Wert `"true"` um diese als Dialog auszuzeichnen.
+
+Zusätzlich zu der geforderten Kopfzeile wurde im `role="main"`-Bereich etwas Demo-Content eingerügt.  
+Ausßerdem findet sich hier auch ein `data-role="footer"`-Bereich welcher einen Button beinhaltet um zur `id="page1"` zurückzukehren. Für diese Rückkehrfunktion wurde im `<a>`-Element das Attribut `data-rel` mit dem Wert `"back"` verwendet.
 
 ## kikasTheme.css [[Inhalt](inhalt)]
 
-...
+Um der WebApp einen annähernd gleichen Look wie die Webseite zu verleihen wurde via [ThemeRoller](https://themeroller.jquerymobile.com/) ein Custom-Theme unter Verwendung der Projekt-Farben generiert.
+
+Ferner wurde dieses Theme weiter modifiziert. So wurden auch hier die bereits bei der Webseite verwendeten Schriftarten [Charm](https://fonts.google.com/specimen/Charm?query=Charm) und [Montserrat](https://fonts.google.com/specimen/Montserrat?query=Montser) von [Google](https://fonts.google.com/) eingebunden und zugewiesen.  
+Insbesondere die Schriftgröße für Überschriften wurde zweckmäßig angepasst.
