@@ -31,7 +31,7 @@
   - [main.js im Detail \[Inhalt\]](#mainjs-im-detail-inhalt)
     - [Initiale Operationen \[Inhalt\]](#initiale-operationen-inhalt)
       - [Selektion der relevanten Elemente \[Inhalt\]](#selektion-der-relevanten-elemente-inhalt)
-      - [Deklaration und Initialisierung erfoderlicher Statusvariablen \[Inhalt\]](#deklaration-und-initialisierung-erfoderlicher-statusvariablen-inhalt)
+      - [Deklaration und Initialisierung erforderlicher Statusvariablen \[Inhalt\]](#deklaration-und-initialisierung-erforderlicher-statusvariablen-inhalt)
       - [Initiale Funktionsaufrufe \[Inhalt\]](#initiale-funktionsaufrufe-inhalt)
       - [Registrierung der erfoderlichen EventListener \[Inhalt\]](#registrierung-der-erfoderlichen-eventlistener-inhalt)
     - [Manipulation der Sichtbarkeit der Seitennavigation und Darstellung des "Hamburger"-Buttons \[Ihalt\]](#manipulation-der-sichtbarkeit-der-seitennavigation-und-darstellung-des-hamburger-buttons-ihalt)
@@ -39,7 +39,7 @@
       - [Die Funktion `toggleMenu(e)` \[Inhalt\]](#die-funktion-togglemenue-inhalt)
       - [Die Funktion `alterMenButton()` \[Inhalt\]](#die-funktion-altermenbutton-inhalt)
     - [Ermittlung und Anzeige von Geodaten mittels der Funktion `showPosition(e = undefined)` \[Inhalt\]](#ermittlung-und-anzeige-von-geodaten-mittels-der-funktion-showpositione--undefined-inhalt)
-      - [Erfogreiche Ermittlung d. Geodaten \[Inhalt\]](#erfogreiche-ermittlung-d-geodaten-inhalt)
+      - [Erfolgreiche Ermittlung d. Geodaten \[Inhalt\]](#erfolgreiche-ermittlung-d-geodaten-inhalt)
       - [Fehler beim ermitteln der Geodaten \[Inhalt\]](#fehler-beim-ermitteln-der-geodaten-inhalt)
   - [jqm.html im Detail \[Inhalt\]](#jqmhtml-im-detail-inhalt)
     - [`<head>`-Bereich von ***jqm.html*** \[Inhalt\]](#head-bereich-von-jqmhtml-inhalt)
@@ -52,14 +52,14 @@
 
 ## Projektbeschreibung [[Inhalt](#inhalt)]
 
-Das vorliegende Projekt entstand im Rahmen eines Ferstudiengangs zum Web-Entwickler und stellt die praktische Abschlussarbeit dar.
+Das vorliegende Projekt entstand im Rahmen eines Fernstudiengangs zum Web-Entwickler und stellt die praktische Abschlussarbeit dar.
 
-Zu den Anforderungen gehörten unter Anderem eine Website unter Verwedung des des Frameworks [HTML5 Boilerplate](https://html5boilerplate.com/), einhergehend mit sinnvollem Einsatz des semantischen Markups und unter Beachtung des Mobile First- Prinzips zu erstellen. Für Endgeräte mit kleinem Display sollte ein einspaltiges, für Geräte mit größerem Bildschirm ein zweispaltiges Layout etstellt werden.
+Zu den Anforderungen gehörten unter Anderem eine Website unter Verwendung des des Frameworks [HTML5 Boilerplate](https://html5boilerplate.com/), einhergehend mit sinnvollem Einsatz des semantischen Markups und unter Beachtung des Mobile First- Prinzips zu erstellen. Für Endgeräte mit kleinem Display sollte ein einspaltiges, für Geräte mit größerem Bildschirm ein zweispaltiges Layout erstellt werden.
 
 Weitere Anforderungen an die Website waren insbesondere:
 
 - Einbindung eines responsiven Bildes unter Verwendung der Attribute `srcset` und `sizes`.
-- Verwendung der Geolocation API zur Ermittlung der aktuellen geographischen Position und Anzeige der daten als `alert()`.
+- Verwendung der Geolocation API zur Ermittlung der aktuellen geographischen Position und Anzeige der Daten als `alert()`.
 - Erstellung und Gestaltung einer Schaltfläche zum aufrufen der WebApp nach spezifischen, gestalterischen Vorgaben.
 
 Darüber hinaus wurde gefordert eine einfache WebApp mit Hilfe von [jQuery Mobile](https://jquerymobile.com/) zu entwickeln und diese über eine Schaltfläche aus der Website heraus zugänglich zu machen.
@@ -88,7 +88,7 @@ Für die Gestaltung der WebApp habe ich unter Verwendung von [ThemeRoller](https
 | --- | --- | --- |
 | [index.html](#indexhtml-im-detail-inhalt) | `/` | HTML-Dokument welches die Webseite implementiert. |
 | [main.css](#maincss-im-detail-inhalt) | `/css/` | Styling der Webseite |
-| [main.js](#mainjs-im-detail-ihalt) | `/js/` | Stellte die Logik f. die Webseite bereit. |
+| [main.js](#mainjs-im-detail-inhalt) | `/js/` | Stellte die Logik f. die Webseite bereit. |
 | [jqm.html](#jqmhtml-im-detail-inhalt) | `/` | HTML-Dokument welches die jQuery Mobile-Anwendung implementiert. |
 | [kikasTheme.css](#kikasthemecss-inhalt) | `/css/` | Individuelles Theme f. die jQuery Mobile-Anwendung. |
 
@@ -98,27 +98,27 @@ Für die Gestaltung der WebApp habe ich unter Verwendung von [ThemeRoller](https
 
 Die HTML-Elemente `<title>`, bzw. die `<meta>`-Elemente mit den Attributen `description`, `author` und `generator` wurden modifiziert bzw. ergänzt.
 
-Neben der primären Styling-Datei ***main.css*** ([main.css](#maincss-im-detail-inhalt)) werden im `<head>`-Bereich des HTML-Dokuments via CDN die Dateien ***leaflet-routing-machine.css*** ([Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) und ***leaflet.css*** ([Leafletjs](https://leafletjs.com/)) eingebunden. Diese dienen dem styling der OSM-Karte und der Route.
+Neben der primären Styling-Datei ***main.css*** ([main.css](#maincss-im-detail-inhalt)) werden im `<head>`-Bereich des HTML-Dokuments via CDN die Dateien ***leaflet-routing-machine.css*** ([Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) und ***leaflet.css*** ([Leafletjs](https://leafletjs.com/)) eingebunden. Diese dienen dem Styling der OSM-Karte und der Route.
 
 ### `body`-Bereich [[Inhalt](#inhalt)]
 
-Der Aufbau folgt einem sinnvollen, semantischen Markup unter Einsatz der etablierten HTML5-Elemente. Der Content gliedert sich dementsprechend in die primäten Bereiche [`<nav>`](#details-zum-nav-element-idpagenav-inhalt), [`<header>`](#details-zum-header-element-seiten-header-inhalt), `<main>` und `<footer>`. Diese werden von einem `<div>`-Element (`id="pageWrapper"`) umschlossen.  
+Der Aufbau folgt einem sinnvollen, semantischen Markup unter Einsatz der etablierten HTML5-Elemente. Der Content gliedert sich dementsprechend in die primären Bereiche [`<nav>`](#details-zum-nav-element-idpagenav-inhalt), [`<header>`](#details-zum-header-element-seiten-header-inhalt), `<main>` und `<footer>`. Diese werden von einem `<div>`-Element (`id="pageWrapper"`) umschlossen.  
 Innerhalb von `main` findet eine weitere Unterteilung des Contents statt. Hier steht einem weiteren `<div>`-Element (`id="contentWrapper"`) ein `<aside>`-Element gegenüber.
 
-Vor dem schließenden `</body>`-Tag werden die erforderlichen, JavaScriptdateien eingebunden:
+Vor dem schließenden `</body>`-Tag werden die erforderlichen, JavaScript-Dateien eingebunden:
 
 | Datei | Variante | Erläuterung |
 | --- | --- | --- |
-| ***leaflet.js*** | CDN | Bibiliothek zur anzeige von OSM-Karten. [Leafletjs](https://leafletjs.com/) |
-| ***leaflet-routing-machine.js*** | CDN | Bilbiothek zur Berechnung und Anzeige von Routen innerhalb von OSM-Karten [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) |
+| ***leaflet.js*** | CDN | Bibliothek zur anzeige von OSM-Karten. [Leafletjs](https://leafletjs.com/) |
+| ***leaflet-routing-machine.js*** | CDN | Bibliothek zur Berechnung und Anzeige von Routen innerhalb von OSM-Karten [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) |
 | ***jquery-1.11.1.min.js*** | CDN | jQuery in der Version 1.11.1 |
-| ***modernizr-3.11.2.min.js*** | local | Analyse der jweils zur Verfügung stehenden Browserfeatures. (Teil von HTML5 Boilerplate.) |
+| ***modernizr-3.11.2.min.js*** | local | Analyse der jweils zur Verfügung stehenden Browser-Features. (Teil von HTML5 Boilerplate.) |
 | ***plugins.js*** | local | Datei zum einbinden von Plugins (Teil von HTML5 Boilerplate.) |
 | ***main.js*** | local | Eigener JavaScript-Code (Teil von HTML5 Boilerplate.) |
 
 #### Details zum `<nav>`-Element (`id="pageNav"`) [[Inhalt](#inhalt)]
 
-Die Seitennavigation hat die Gestalt einer ungeordneten Liste (`<ul>`) mit vier Listenelementen (`<li>`). Jedes dieser Listenelemente binhaltet jeweils ein Link-Element (`<a>`) mit der Klasse `pageLink`. Diese Link-Elemente verweisen auf die verschiedenen Sektionen von [`id="contentWrapper"`](#das-div-element-idcontentwrapper-inhalt).
+Die Seitennavigation hat die Gestalt einer ungeordneten Liste (`<ul>`) mit vier Listenelementen (`<li>`). Jedes dieser Listenelemente beinhaltet jeweils ein Link-Element (`<a>`) mit der Klasse `pageLink`. Diese Link-Elemente verweisen auf die verschiedenen Sektionen von [`id="contentWrapper"`](#das-div-element-idcontentwrapper-inhalt).
 
 #### Details zum `<header>`-Element (Seiten-Header) [[Inhalt](#inhalt)]
 
@@ -140,7 +140,7 @@ Die Inhalte der `<section>`-Elemente der Klasse `contentSection` verfügen alle 
 
 Neben einem `<div>`-Element der Klasse `textContent` findet sich in dieser Sektion innerhalb des `<div>`-Containers mit `class="sc"`, ein weiteres `<div>`-Element mit der Klasse `imageContainer` welches das in der Aufgabenstellung geforderte responsive Bild beinhaltet.
 
-Das `<img>`-Element bestitzt die folgenden Attribute und Werte:
+Das `<img>`-Element besitzt die folgenden Attribute und Werte:
 
 | Attribut | Wert(e) | Erläuterungen |
 | --- | --- | --- |
@@ -149,7 +149,7 @@ Das `<img>`-Element bestitzt die folgenden Attribute und Werte:
 | `srcset` | *"./img/banana-cups-320.jpg 320w,<br>./img/banana-cups-640.jpg 640w,<br>./img/banana-cups-1280.jpg 1280w"* | Verweise auf die verschiedenen Auflösungsvarianten der Bilddatei. |
 | `sizes` | *"(max-width: 40em) 100vw, 33vw"* | Größendefinition: Bis zu einer maximalen VP-Breite von `40em` bekommt das Bild eine Beite von `100vw`, darüber hinaus eine Breite von `33vw`. |
 
-**Hinweis**: Bemerkenswert sind in diesem Zusammenahng die unterschiedlichen Verhaltensweisen Chromium-Basierter Browser einerseits und Firefox andererseits. Während Firefox beim skalieren des VP immer zur am besten zum VP passende Bilddatei wechselt, verhalten sich Browser die auf Chromium basieren so, dass nachdem die am höchsten aufgelöste Bilddatei nachgeladen wurde (Skalierung des VP von klein nach groß.), beim erneuten verkleinern des VP **nicht** auf eine geringer aufgelöste Version des Bildes zurückgewechselt wird.
+**Hinweis**: Bemerkenswert sind in diesem Zusammenhang die unterschiedlichen Verhaltensweisen Chromium-Basierter Browser einerseits und Firefox andererseits. Während Firefox beim skalieren des VP immer zur am besten zum VP passende Bilddatei wechselt, verhalten sich Browser die auf Chromium basieren so, dass nachdem die am höchsten aufgelöste Bilddatei nachgeladen wurde (Skalierung des VP von klein nach groß.), beim erneuten verkleinern des VP **nicht** auf eine geringer aufgelöste Version des Bildes zurück gewechselt wird.
 
 ##### Details zur Sektion `id="info"` (OSM-Karte mit [Leafletjs](https://leafletjs.com/) und [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)) [[Inhalt](#inhalt)]
 
@@ -186,15 +186,15 @@ Folgende Farben und Farbverläufe wurden in Form von CSS-Variablen definiert:
 
 ### Navigationsleiste [[Inhalt](#inhalt)]
 
-Der Aufgabenstellung entsprechend wird via CSS eine horizontale Navigationsleiste realisiert. Einem konsequenten Mobile First-Ansatz entsprechened jedoch erst ab dem ersten Breakpoint welcher bei `40em`(640px) liegt. Ist der VP kleiner befinden sich die Elemente der Seitennavigation in einer vertikalen Anordnung und sind standardmäßig ausgeblendet. Ein "Hamburger-Button" (`id="hButton"`) ermöglicht den Zugriff auf die Navigationspunkte.
+Der Aufgabenstellung entsprechend wird via CSS eine horizontale Navigationsleiste realisiert. Einem konsequenten Mobile First-Ansatz folgend jedoch erst ab dem ersten Breakpoint welcher bei `40em`(640px) liegt. Ist der VP kleiner befinden sich die Elemente der Seitennavigation in einer vertikalen Anordnung und sind standardmäßig ausgeblendet. Ein "Hamburger-Button" (`id="hButton"`) ermöglicht den Zugriff auf die Navigationspunkte.
 
 Die Navigationsleiste ist oberhalb des `<header>`-Elements positioniert. Auf diese Weise wird ein optisch natloser Übergang zum eigentlichen Content (`<main>`) vereinfacht.
 
-Ab einer VP-Breite von `80em` (1280px) wird die Seitennavigation als vertikale Leiste links vom Content (`<main>`) dargestellt. Um dies zu realisieren wechselt das Layout-Konzept von Flex-Box zu Grid. Damit ist ein asymetrisches, zweispalitges Layout realisiert.
+Ab einer VP-Breite von `80em` (1280px) wird die Seitennavigation als vertikale Leiste links vom Content (`<main>`) dargestellt. Um dies zu realisieren wechselt das Layout-Konzept von Flex-Box zu Grid. Damit ist ein asymmetrisches, zweispaltiges Layout realisiert.
 
 Unabhängig vom aktuellen VP und der jeweiligen Erscheinungsform der Navigationsleiste, wurde dieser mit der CSS-Eigenschaft `position: sticky` eine ständige Erreichbarkeit ohne lästiges scollen verliehen.
 
-Alle Links der Navigation, sowie die Schalftfläche zum öffnen der WebApp (ausgenommen `id="hButton"`) wurde mittels der CSS-Eigenschaften `border-radius: .5em` mit abgerundeten Ecken, bzw. `background: var(--mainGradient)` mit einem Farbverlauf versehen.
+Alle Links der Navigation, sowie die Schaltfläche zum öffnen der WebApp (ausgenommen `id="hButton"`) wurde mittels der CSS-Eigenschaften `border-radius: .5em` mit abgerundeten Ecken, bzw. `background: var(--mainGradient)` mit einem Farbverlauf versehen.
 
 ### (Quasi) dreispaltiges Layout [[Inhalt](#inhalt)]
 
@@ -207,7 +207,7 @@ Dieses (quasi) dreispaltige Layout ermöglicht eine bessere Nutzung des zur Verf
 
 Die Datei ***main.js*** widmet sich bei diesem Projekt zwei Aufgabenbereichen:
 
-1. Die automatische und benutzergesteuerte manipulation der Seitennavigation in Bezug auf dessen Sichtbarkeit, bzw. dessen Wechsel. In Abhängigkeit hierzu ebenso die manipulation der Darstellung des "Hamburger"-Buttons.
+1. Die automatische und benutzergesteuerte Manipulation der Seitennavigation in Bezug auf dessen Sichtbarkeit, bzw. dessen Wechsel. In Abhängigkeit hierzu ebenso die Steuerung der Darstellung des "Hamburger"-Buttons.
 2. Die Ermittlung und automatische Ausgabe der Geodaten, sowie die Initialisierung und Darstellung einer OSM-Karte, nebst Routenberechnung und ebenso dessen Darstellung innerhalb der Karte.
 
 ### Initiale Operationen [[Inhalt](#inhalt)]
@@ -222,11 +222,11 @@ Nach dem die Seite vollständig geladen wurde (`$(() => { ... })`) werden die fo
 | `hButton` | `#hButton` | Der "Hamburger"-Button |
 | `pageLinks` | `.pageLink` | Alle `<a>` Elemente mit entsprechender Klassenzugehörigkeit. (Die einzelnen Links der Seitennavigation) |
 
-#### Deklaration und Initialisierung erfoderlicher Statusvariablen [[Inhalt](#inhalt)]
+#### Deklaration und Initialisierung erforderlicher Statusvariablen [[Inhalt](#inhalt)]
 
 | Variable | initialer Wert | Erläuterung |
 | --- | --- | --- |
-| `vpIsDesktop` | `false` | Ist der akltuelle VP ein Desktop? |
+| `vpIsDesktop` | `false` | Ist der aktuelle VP ein Desktop? |
 | `mainMenuVisible` | `false` | Ist die Seitennavigation momentan sichtbar? |
 | `hbuttonIsX` | `false` | Wird der "Hamburger"-Button momentan als "X" angezeigt? |
 | `positon` | none | Zwischenspeicher f. die ermittelten Geodaten. |
@@ -248,7 +248,7 @@ Nach dem die Seite vollständig geladen wurde (`$(() => { ... })`) werden die fo
 
 ### Manipulation der Sichtbarkeit der Seitennavigation und Darstellung des "Hamburger"-Buttons [[Ihalt](#inhalt)]
 
-Die folgenden Funktionen finden bei der automatisierten, bzw. benutzergesteuerten Manipulation der Sichbarkeit der Seitennavigation und Erscheinungsform des "Hamburger"-Buttons Anwendung.
+Die folgenden Funktionen finden bei der automatisierten, bzw. benutzergesteuerten Manipulation der Sichtbarkeit der Seitennavigation und Erscheinungsform des "Hamburger"-Buttons Anwendung.
 
 #### Die Funktion `setIsDesktop()` [[Inhalt](#inhalt)]
 
@@ -260,12 +260,12 @@ Im Anschluss hierauf wird die Funktion `toggleMenu()` (ohne Argument) aufgerufen
 
 Die Funktion prüft zunächst ob ein Parameter `e` übergeben wurde **und** ob der Wert von `vpIsDesktop` den Wert `false` hat. Wenn **beides** zutreffend ist, dann werden folgende Anweisungen ausgeführt:
 
-1. Aufruf der Methode `slideToggle(...)` am Element welches `mainMenu` rferenziert.
+1. Aufruf der Methode `slideToggle(...)` am Element welches `mainMenu` referenziert.
 2. Invertierung des Wertes der Variablen `mainMenuVisible`.
 3. Invertierung des Wertes der Variablen `hbuttonIsX`.
 4. Aufruf der Funktion `alterMenButton()`.
 
-Sofern **auch nur eine** der zuvor definierten Bedinugnen nicht erfüllt ist werden folgende Anweisungen ausgeführt:
+Sofern **auch nur eine** der zuvor definierten Bedingungen nicht erfüllt ist werden folgende Anweisungen ausgeführt:
 
 1. Sofern `vpIsDesktop` den Wert `true` besitzt wird die Methode `slideDown()` an dem Element welches `mainMenu` referenziert ausgeführt, andernfalls die Methode `slideUp()`.
 2. Invertierung des Wertes der Variablen `mainMenuVisible`.
@@ -276,33 +276,33 @@ Sofern **auch nur eine** der zuvor definierten Bedinugnen nicht erfüllt ist wer
 
 Um nachfolgend die Elemente des "Hamburger"-Buttons manipulieren zu können werden diese via entsprechender Konstanten (`hbeTop`, `hbeMid`, `hbeBottom`) referenzert.
 
-In Abhängigkeit von dem aktuellen Wert der Variablen `hbuttonIsX` werden unter Verwendung der Methode `css()` die referenzierten Element des "Hamburger"-Buttons entweder horizontal übereinander, oder in der form eines "X" arrangiert.
+In Abhängigkeit von dem aktuellen Wert der Variablen `hbuttonIsX` werden unter Verwendung der Methode `css()` die referenzierten Element des "Hamburger"-Buttons entweder horizontal übereinander, oder in der Form eines "X" arrangiert.
 
 ### Ermittlung und Anzeige von Geodaten mittels der Funktion `showPosition(e = undefined)` [[Inhalt](#inhalt)]
 
 Nach erfolgreicher Prüfung ob der verwendete Browser die Geolocation API unterstützt wird zunächst ein Objekt `geoOptions` deklartiert. Dieses beinhaltet als einziges Attribut `enableHighAccuracy` mit dem Wert `true`.
 
-Hiernach erfolgt der Aufrug der Methode `getCurrentPosition(pos => { ... }, err => { ... }, geoOptions)`. Als Argumente werden dieser Methode zwei Anonyme Funktionen und das zufor Definierte Objekt `geoOptions` übergeben.
+Hiernach erfolgt der Aufrug der Methode `getCurrentPosition(pos => { ... }, err => { ... }, geoOptions)`. Als Argumente werden dieser Methode zwei Anonyme Funktionen und das zuvor Definierte Objekt `geoOptions` übergeben.
 
-#### Erfogreiche Ermittlung d. Geodaten [[Inhalt](#inhalt)]
+#### Erfolgreiche Ermittlung d. Geodaten [[Inhalt](#inhalt)]
 
 Bei erfolgreiche Ermittlung der Geodaten wird die erste Anonyme Funktion ausgeführt, welche als Argument (`pos`) die Geodaten enthält.
 
 Zuerst erfolgt, wie in der Aufgabenstellung gefordert, die Ausgabe der Geodaten in Form eines Alert-Dialoges (`alert( ... )`). Zudem werden die Daten in der Variablen `position` gesichert.
 
-Unter Verwendung von [Leafletjs](https://leafletjs.com/) wird mit der Methode `map( ... )` ein neues Map-Objekt erzeugt und über die Variable `map` referenziert. Als Argumente erhält `map( ... )` das Zielelement (Einhängepukt im DOM) in ***index.html***, sowie ein Konfigurationsobjekt. Mit Hilfe dieses Konfigurationsobjektes wird die Zoomfunkton mittels Mausrad deaktiviert (`scrollWeelZoom:false`).  
+Unter Verwendung von [Leafletjs](https://leafletjs.com/) wird mit der Methode `map( ... )` ein neues Map-Objekt erzeugt und über die Variable `map` referenziert. Als Argumente erhält `map( ... )` das Zielelement (Einhängepunkt im DOM) in ***index.html***, sowie ein Konfigurationsobjekt. Mit Hilfe dieses Konfigurationsobjektes wird die Zoomfunkton mittels Mausrad deaktiviert (`scrollWeelZoom:false`).  
 Ferner wird mit Hilfe der Methode `setView( ... )` die Ansicht auf spezifische Koordinaten zentriert. Diese Koordinaten werden als Argument in der Form eines Arrays der Methode Übergeben (`[position.coords.latitude, position.coords.longitude]`). Das zweite Argument `11` definiert die initiale Zoomstufe.
 
 Mit dem Aufruf der Methoden `tileLayer( ... )` und `addTo(map)` werden die eigentlichen Kartendaten geladen und dem Objekt `map` zugewiesen.  
 Hierbei erhält `tileLayer( ... )` zwei Argumente:
 
 1. Der Pfad zum Kartenmaterial (`'https://tile.openstreetmap.org/{z}/{x}/{y}.png'`)
-2. Ein Konfigurationsobjekt bei dem mittels des Attributs `maxZoom` die maximale Zoomstufe, und durch `attribution` obligatorische Copyright-Informationen definiert werden. 
+2. Ein Konfigurationsobjekt bei dem mittels des Attributs `maxZoom` die maximale Zoomstufe, und durch `attribution` obligatorische Copyright-Informationen definiert werden.
 
-Im folgenden Schritt werden der Karte zwei Marker hinzugefügt (die ermittelte, geographische Position und ein Zielort). Die geschieht jeweils durch den Aufruf d. Methode `marker(...)`. Als Argrument erhält die Methode die entsprechende, geographische Position an denen die Markierungen in der Karte gesetzt werden sollen.  
+Im folgenden Schritt werden der Karte zwei Marker hinzugefügt (die ermittelte, geographische Position und ein Zielort). Die geschieht jeweils durch den Aufruf d. Methode `marker(...)`. Als Argument erhält die Methode die entsprechende, geographische Position an denen die Markierungen in der Karte gesetzt werden sollen.  
 Auch hier werden durch Aufruf von `addTo(map)` diese Objekte dem `map`-Objekt hinzugefügt.
 
-Unter Verwendung von [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) erfolgt eine Berechnung und Anzeige einer Route zwischen der ermittelten Postioen und dem Zielpunk.  
+Unter Verwendung von [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) erfolgt eine Berechnung und Anzeige einer Route zwischen der ermittelten Position und dem Zielpunk.  
 Hierfür wird die Methode `control( ... )` aufgerufen. Als Argumente erhält diese ein Objekt welches als Attribut ein Array von Wegpunkten (`waypoints`) enthält. (Hier lediglich Start und Ziel.)
 
 #### Fehler beim ermitteln der Geodaten [[Inhalt](#inhalt)]
@@ -315,7 +315,7 @@ Sofern es zu einem Fehler kommt wird die zweite Anonyme Funktion (`err => { ... 
 
 ### `<head>`-Bereich von ***jqm.html*** [[Inhalt](#inhalt)]
 
-Neben der Modifikation/Ergänzung des `<title>`-Elmenents und der `<meta>`-Elemente mit den `name`-Attributen `"autohor"` und `"generator"` werden die folgenden Dateien via `<link>`, bzw. `<script>` eingebunden:
+Neben der Modifikation/Ergänzung des `<title>`-Elements und der `<meta>`-Elemente mit den `name`-Attributen `"autohor"` und `"generator"` werden die folgenden Dateien via `<link>`, bzw. `<script>` eingebunden:
 
 | Datei | Variante | Erläuterung |
 | --- | --- | --- |
@@ -342,13 +342,13 @@ Es werden zwei "Seiten" (`id="page1"` und `id="page2"`) implementiert, welche be
 
 Die "Seite" beinhaltet wie gefordert, Kopf- u. Fußzeile mit jeweiliger Überschrift, sowie im `role="main"`-Bereich ein Button zum aufrufen des Dialogs und eine Liste.
 
-Bei dem Button handelt es sich um ein `<a>`-Element welches durch Zuweisung der Klassen `ui-button` und `ui-corner-all` (abgerundete Ecken) als solcher deklrariert wird. Als Übergangsanimation wurde `data-transition` mit dem Wert `"flip"` verwendet.
+Bei dem Button handelt es sich um ein `<a>`-Element welches durch Zuweisung der Klassen `ui-button` und `ui-corner-all` (abgerundete Ecken) als solcher deklariert wird. Als Übergangsanimation wurde `data-transition` mit dem Wert `"flip"` verwendet.
 
 Für die geforderte Liste wurde ein `<ul>`-Element verwendet welches über die folgenden Attribute verfügt:
 
 - `data-role="listview`
 - `data-filter="true"` (Nutzereingaben filtern die Liseneinträge.)
-- `data-filter="Speisekarte durchsuchen ..."` (Platzhaltertext für das Filter-Eingabefeld.)
+- `data-filter="Speisekarte durchsuchen ..."` (Platzhalter für das Filter-Eingabefeld.)
 - `data-insert="true"`
 
 #### `id="page2"` im Detail [[Inhalt](inhalt)]
@@ -356,7 +356,7 @@ Für die geforderte Liste wurde ein `<ul>`-Element verwendet welches über die f
 Neben dem Attribut `data-role="page"` erhält das root-Element der 2. "Seite" `data-dialog` mit dem Wert `"true"` um diese als Dialog auszuzeichnen.
 
 Zusätzlich zu der geforderten Kopfzeile wurde im `role="main"`-Bereich etwas Demo-Content eingerügt.  
-Ausßerdem findet sich hier auch ein `data-role="footer"`-Bereich welcher einen Button beinhaltet um zur `id="page1"` zurückzukehren. Für diese Rückkehrfunktion wurde im `<a>`-Element das Attribut `data-rel` mit dem Wert `"back"` verwendet.
+Außerdem findet sich hier auch ein `data-role="footer"`-Bereich welcher einen Button beinhaltet um zur `id="page1"` zurückzukehren. Für diese Rückkehrfunktion wurde im `<a>`-Element das Attribut `data-rel` mit dem Wert `"back"` verwendet.
 
 ## kikasTheme.css [[Inhalt](inhalt)]
 
